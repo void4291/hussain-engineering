@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -108,6 +108,10 @@
   .tab-nav {
     background: var(--navy-mid);
     border-bottom: 2px solid rgba(255,255,255,0.07);
+    position: sticky;
+    top: 74px;
+    z-index: 99;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   }
   .tab-nav-inner {
     max-width: 1200px;
@@ -524,6 +528,175 @@
   }
   .info-box strong { color: #3A2700; }
 
+  /* ── TENDER RESULT CARDS ────────────────────── */
+  .tender-results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .trc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0;
+    overflow: hidden;
+    transition: box-shadow 0.18s, transform 0.18s;
+  }
+  .trc:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .trc-rank {
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-soft);
+    background: var(--fog);
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .trc.verified .trc-rank { background: #0D2E1E; color: var(--teal-light); }
+  .trc-main { padding: 16px 20px; flex: 1; }
+  .trc-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .trc-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--navy);
+    flex: 1;
+    min-width: 200px;
+    line-height: 1.35;
+  }
+  .trc-title a { color: inherit; text-decoration: none; }
+  .trc-title a:hover { color: var(--teal); }
+  .trc-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+  }
+  .status-verified { background: #0A3828; color: #4ECDC4; border: 1px solid #0E7C7B; }
+  .status-research { background: #EEF5FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .status-live     { background: #FFF3D6; color: #D48806; border: 1px solid #F0C040; }
+  .trc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 8px;
+  }
+  .trc-meta-item {
+    font-size: 12px;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .trc-meta-item strong { color: var(--text); }
+  .trc-desc {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    border-left: 3px solid var(--teal);
+    padding-left: 10px;
+  }
+  .trc-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    gap: 8px;
+    border-left: 1px solid var(--border);
+    flex-shrink: 0;
+    min-width: 130px;
+  }
+  .trc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.18s;
+  }
+  .trc-btn-primary { background: var(--teal); color: white; }
+  .trc-btn-primary:hover { background: var(--teal-light); }
+  .trc-btn-ghost { background: var(--fog); color: var(--text-mid); border: 1px solid var(--border); }
+  .trc-btn-ghost:hover { background: var(--border); }
+  .trc-platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-soft);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .trc-accent { height: 4px; grid-column: 1 / -1; }
+  .trc-verified-bar { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+  .trc-research-bar { background: linear-gradient(90deg, #2B4A8C, #4A6AC0); }
+  .trc-live-bar     { background: linear-gradient(90deg, var(--warm), #F39C12); }
+  .tender-section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  .tender-section-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #0D2E1E, #0A3828);
+  }
+  .tender-section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .tender-section-sub {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-top: 2px;
+  }
+  .tender-legend {
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: var(--text-mid);
+  }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
   /* ── FOOTER ──────────────────────────────────── */
   footer {
     background: var(--navy);
@@ -574,10 +747,6 @@
     <button class="tab-btn active" onclick="switchTab('market-intel', this)">
       🗂️ Market Intelligence
       <span class="tab-badge">20 Prospects</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('hussain-eng', this)">
-      🏭 Hussain Engineering
-      <span class="tab-badge">Products · Tenders · Pharma</span>
     </button>
     <button class="tab-btn" onclick="switchTab('search-tenders', this)">
       🔍 Search Tenders
@@ -724,829 +893,9 @@
 </div><!-- /tab-market-intel -->
 
 
-<!-- ══════════════════════════════════════════════════
-     TAB 2 — HUSSAIN ENGINEERING
-══════════════════════════════════════════════════════ -->
-<div id="tab-hussain-eng" class="tab-panel">
-
-  <main>
-
-    <!-- Business Profile -->
-    <div style="padding-top: 36px;">
-      <div class="he-profile">
-        <div class="he-profile-left">
-          <div class="he-eyebrow">Proprietorship · Karachi, Pakistan</div>
-          <div class="he-name">Hussain Engineering</div>
-          <div class="he-sub">FRP / Fiberglass Fabrication &amp; Custom Manufacturing · Est. Karachi</div>
-          <div class="he-tags">
-            <span class="he-tag he-tag-auto">🚗 Automobiles</span>
-            <span class="he-tag he-tag-pharma">💊 Pharmaceuticals</span>
-            <span class="he-tag he-tag-frp">🔩 FRP / Reinforcement</span>
-          </div>
-        </div>
-        <div class="he-profile-right">
-          <div class="he-products-title">Products Manufactured</div>
-          <div class="he-products-grid">
-            <div class="he-product-pill"><span>🚗</span> Spoilers</div>
-            <div class="he-product-pill"><span>🔧</span> All Body Parts</div>
-            <div class="he-product-pill"><span>🛢️</span> Storage Tanks</div>
-            <div class="he-product-pill"><span>🪑</span> Chairs</div>
-            <div class="he-product-pill"><span>🏠</span> Car Parking Sheds</div>
-            <div class="he-product-pill"><span>🧪</span> Tank Linings</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="info-box">
-      <strong>Strategic Focus:</strong> Two sectors are identified as priority targets. <strong>Automobiles</strong> — market remains largely unaffected by seasonal fluctuations, giving steady year-round demand for spoilers, body panels, and custom parts. <strong>Pharmaceuticals</strong> — manufacturing plants require FRP tanks and linings for chemical storage, effluent treatment, and process water, with ongoing maintenance procurement creating repeat business. FRP / Reinforcement work underpins both.
-    </div>
-
-    <!-- ── SECTOR 1: AUTOMOBILES ──────────────────── -->
-    <section class="client-section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#FFF0F0;">🚗</div>
-        <div class="section-title">Sector 1 — Automobiles · Spoilers, Body Parts &amp; Sheds</div>
-        <span class="section-count">Tenders &amp; Targets</span>
-      </div>
-
-      <div class="card-grid">
-
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#FFF5F5; border-bottom:1px solid #FFE0E0;">
-            <div class="tfc-icon">📋</div>
-            <div><div class="tfc-title">Active Procurement Portals — Auto Sector</div><div class="tfc-sub">Monitor weekly for FRP body parts, shed, and parking shade tenders</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#C0392B;"></div>
-              <div class="tfc-item-text"><a href="https://www.ppra.org.pk/dad_tenders_h.asp" target="_blank">PPRA Federal — Search "fiberglass", "FRP", "parking shade"</a><div class="tfc-item-label">Federal government procurement — police, army, govt buildings regularly buy FRP sheds &amp; parking shades</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#0E7C7B;"></div>
-              <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst" target="_blank">SPPRA Sindh — Search "shade", "canopy", "fiberglass"</a><div class="tfc-item-label">Sindh govt agencies — schools, hospitals, offices procure FRP car parking shades</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://tenderalert.pk/category/civil-construction-tenders" target="_blank">TenderAlert.pk — Civil / Construction feed</a><div class="tfc-item-label">Private sector sheds, canopies, and parking structures appear here</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#7C3AED;"></div>
-              <div class="tfc-item-text"><a href="https://www.paapam.com/members-a-e" target="_blank">PAAPAM Member Directory — Auto Parts Manufacturers</a><div class="tfc-item-label">Every PAAPAM member is a potential buyer of FRP body components, spoilers, and panels</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#FFF5E6; border-bottom:1px solid #FFE0A0;">
-            <div class="tfc-icon">🚌</div>
-            <div><div class="tfc-title">Bus &amp; Commercial Vehicle Assemblers</div><div class="tfc-sub">Direct clients for body parts, spoilers, cab panels — same as Ghandhara</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#C0392B;"></div>
-              <div class="tfc-item-text"><a href="https://hinopak.com" target="_blank">Hinopak Motors — hinopak.com</a><div class="tfc-item-label">SITE, Karachi · 70% market share in buses · HOT prospect</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#C0392B;"></div>
-              <div class="tfc-item-text"><a href="https://mmcl.com.pk" target="_blank">Master Motors (Yutong) — mmcl.com.pk</a><div class="tfc-item-label">New EV bus model = open supply chain · HOT prospect</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://www.ghandharaautomobiles.com.pk" target="_blank">Ghandhara Automobiles (Dongfeng/JAC)</a><div class="tfc-item-label">Sister company to existing client · WARM — warm intro available</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://suzukipakistan.com" target="_blank">Pak Suzuki (Ravi Pickup Ecosystem)</a><div class="tfc-item-label">Ravi fiberglass body kits are active market in Karachi · WARM</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#F0F5FF; border-bottom:1px solid #C0D0F0;">
-            <div class="tfc-icon">🏠</div>
-            <div><div class="tfc-title">Car Parking Sheds — Institutional Buyers</div><div class="tfc-sub">Government departments, hospitals, housing schemes are the biggest buyers of FRP parking sheds</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#1565C0;"></div>
-              <div class="tfc-item-text"><a href="https://www.fbr.gov.pk/tenders" target="_blank">FBR Tenders — fbr.gov.pk/tenders</a><div class="tfc-item-label">Federal Board of Revenue offices regularly procure parking shades &amp; canopies</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#0E7C7B;"></div>
-              <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst" target="_blank">SPPRA Sindh — All Departments</a><div class="tfc-item-label">Hospitals, schools, district offices — all procure FRP car shades via SPPRA</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://dhacitykarachi.org.pk/tender/" target="_blank">DHA City Karachi — Tender Page</a><div class="tfc-item-label">Large residential schemes = large-scale parking shade procurement</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#7C3AED;"></div>
-              <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php" target="_blank">TendersInfo.com — Pakistan Tenders</a><div class="tfc-item-label">Aggregated feed — search "parking shade", "fiberglass canopy", "FRP shed"</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── SECTOR 2: PHARMACEUTICALS ─────────────── -->
-    <section class="client-section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#F5F0FF;">💊</div>
-        <div class="section-title">Sector 2 — Pharmaceuticals · Tanks &amp; Linings</div>
-        <span class="section-count">Karachi Plants Directory</span>
-      </div>
-
-      <div class="info-box" style="background:#F5F0FF; border-color:#C4B5FD; border-left-color:#7C3AED; color:#3B1F6E;">
-        <strong>Why pharma is a strong fit for Hussain Engineering:</strong> Pharmaceutical manufacturing plants in Karachi use FRP tanks and linings for purified water storage, chemical mixing vessels, effluent treatment tanks, and process water systems. These are recurring maintenance procurement items — tanks get replaced or relined every few years. The plants are concentrated in SITE and Korangi, which means your uncle is already in the right geography.
-      </div>
-
-      <!-- Pharma tender portals -->
-      <div class="card-grid" style="margin-bottom:28px;">
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#F5F0FF; border-bottom:1px solid #DDD6FE;">
-            <div class="tfc-icon">📋</div>
-            <div><div class="tfc-title">Pharma Tender Portals</div><div class="tfc-sub">Where pharmaceutical companies post procurement notices</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php" target="_blank">TendersInfo.com — Pakistan Pharmaceutical Tenders</a><div class="tfc-item-label">Aggregated feed — search "FRP tank", "fiberglass lining", "storage vessel"</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/pharmaceutical-tenders/" target="_blank">TendersOnTime — Pakistan Pharma Tenders</a><div class="tfc-item-label">Dedicated pharmaceutical procurement notices for Pakistan</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#0E7C7B;"></div>
-              <div class="tfc-item-text"><a href="https://www.ppra.org.pk/dad_tenders_h.asp" target="_blank">PPRA Federal — Search "tank" under pharma / health</a><div class="tfc-item-label">Public sector pharma and hospital procurement appears on PPRA</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/city/Karachi" target="_blank">PaperPk — Karachi Tenders</a><div class="tfc-item-label">Private pharma companies occasionally post procurement in newspapers — captured here</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#F5F0FF; border-bottom:1px solid #DDD6FE;">
-            <div class="tfc-icon">🔗</div>
-            <div><div class="tfc-title">Direct Approach — Vendor Registration</div><div class="tfc-sub">Pharma companies have in-house procurement teams — apply to be a registered vendor</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://pk.gsk.com/en-pk/company/" target="_blank">GSK Pakistan — pk.gsk.com</a><div class="tfc-item-label">3 plants in Karachi (SITE F-268, West Wharf, Korangi) — largest pharma in Pakistan by volume</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://www.abbott.com.pk" target="_blank">Abbott Laboratories Pakistan — abbott.com.pk</a><div class="tfc-item-label">2 plants in Karachi (Landhi + Korangi Sector 20) · 1,500+ employees</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://samipharmapk.com" target="_blank">SAMI Pharmaceuticals — samipharmapk.com</a><div class="tfc-item-label">F-95, SITE Karachi · USD 220M revenue · 2nd largest pharma manufacturer in Pakistan</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot purple"></div>
-              <div class="tfc-item-text"><a href="https://www.searle.com.pk" target="_blank">The Searle Company — searle.com.pk</a><div class="tfc-item-label">F-319, SITE Karachi · Listed pharma company · active procurement</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pharma Directory Table -->
-      <div class="portals-box" style="margin-bottom:0;">
-        <div class="portals-title">🏭 Pharmaceutical Manufacturers in Karachi — Priority Contact List</div>
-        <div class="pharma-table-wrap">
-          <table class="pharma-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Company</th>
-                <th>Zone</th>
-                <th>Address</th>
-                <th>FRP Need</th>
-                <th>Website / Contact</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>1</td><td><strong>GSK Pakistan (3 plants)</strong></td><td><span class="pharma-badge pb-site">SITE</span> <span class="pharma-badge pb-korangi">Korangi</span></td><td>F-268 SITE · West Wharf · Korangi</td><td>Process water tanks, chemical vessels, purified water storage</td><td><a href="https://pk.gsk.com" target="_blank">pk.gsk.com</a></td></tr>
-              <tr><td>2</td><td><strong>Abbott Laboratories Pakistan</strong></td><td><span class="pharma-badge pb-korangi">Korangi</span></td><td>Sector 20, Korangi Industrial Area &amp; Landhi</td><td>Storage tanks, effluent treatment vessels, lining work</td><td><a href="https://www.abbott.com.pk" target="_blank">abbott.com.pk</a></td></tr>
-              <tr><td>3</td><td><strong>SAMI Pharmaceuticals</strong></td><td><span class="pharma-badge pb-site">SITE</span></td><td>F-95, Off Hub River Road, SITE</td><td>FRP tanks, chemical storage, purified water vessels</td><td><a href="https://samipharmapk.com" target="_blank">samipharmapk.com</a></td></tr>
-              <tr><td>4</td><td><strong>Pfizer Pakistan</strong></td><td><span class="pharma-badge pb-site">SITE</span></td><td>B-12, SITE, Karachi</td><td>Process tanks, linings for chemical handling</td><td><a href="https://www.pfizer.com.pk" target="_blank">pfizer.com.pk</a></td></tr>
-              <tr><td>5</td><td><strong>Sanofi-Aventis Pakistan</strong></td><td><span class="pharma-badge pb-korangi">Korangi</span></td><td>Plot 23, Sector 2, Korangi Industrial Area</td><td>Chemical storage, effluent tanks</td><td><a href="https://www.sanofi.com/en/local-presence/pakistan" target="_blank">sanofi.com</a></td></tr>
-              <tr><td>6</td><td><strong>Reckitt &amp; Benckiser Pakistan</strong></td><td><span class="pharma-badge pb-site">SITE</span></td><td>F-18, SITE, Karachi</td><td>Chemical and detergent process tanks, FRP linings</td><td><a href="https://www.rb.com/pakistan" target="_blank">rb.com/pakistan</a></td></tr>
-              <tr><td>7</td><td><strong>Roche Pakistan</strong></td><td><span class="pharma-badge pb-korangi">Korangi</span></td><td>Plot 37, Sector 19, Korangi Industrial Area</td><td>Reagent / chemical storage tanks</td><td><a href="https://www.roche.com.pk" target="_blank">roche.com.pk</a></td></tr>
-              <tr><td>8</td><td><strong>The Searle Company</strong></td><td><span class="pharma-badge pb-site">SITE</span></td><td>F-319, SITE, Karachi</td><td>Water treatment tanks, chemical storage vessels</td><td><a href="https://www.searle.com.pk" target="_blank">searle.com.pk</a></td></tr>
-              <tr><td>9</td><td><strong>Getz Pharma</strong></td><td><span class="pharma-badge pb-pharma">Karachi</span></td><td>Karachi (multiple)</td><td>Purified water storage, process vessel linings</td><td><a href="https://www.getzpharma.com" target="_blank">getzpharma.com</a></td></tr>
-              <tr><td>10</td><td><strong>Brookes Pharmaceuticals</strong></td><td><span class="pharma-badge pb-korangi">Korangi</span></td><td>Plot 58, Sector 15, Korangi Industrial Area</td><td>Chemical storage, effluent vessels</td><td>KATI Directory</td></tr>
-              <tr><td>11</td><td><strong>Progressive Labs Pakistan</strong></td><td><span class="pharma-badge pb-korangi">Korangi</span></td><td>12-A/24, Korangi Industrial Area</td><td>Process tanks, lining work</td><td>KATI Directory</td></tr>
-              <tr><td>12</td><td><strong>Eli Lilly (Gohar)</strong></td><td><span class="pharma-badge pb-site">SITE</span></td><td>D-109, SITE, Karachi</td><td>Chemical storage vessels</td><td>SITE Association</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTOR 3: FRP / REINFORCEMENT ──────────── -->
-    <section class="client-section">
-      <div class="section-header">
-        <div class="section-icon" style="background:#F0FFF4;">🔩</div>
-        <div class="section-title">Sector 3 — FRP Reinforcement · Structural Applications</div>
-        <span class="section-count">Tender Sources</span>
-      </div>
-
-      <div class="card-grid">
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#F0FFF4; border-bottom:1px solid #A7F3D0;">
-            <div class="tfc-icon">🏗️</div>
-            <div><div class="tfc-title">Construction &amp; Infrastructure Tenders — FRP</div><div class="tfc-sub">Where structural FRP / reinforcement supply tenders are posted</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#065F46;"></div>
-              <div class="tfc-item-text"><a href="https://www.ppra.org.pk/dad_tenders_h.asp" target="_blank">PPRA Federal — search "FRP", "reinforced plastic", "fiberglass structure"</a><div class="tfc-item-label">Federal infrastructure and public works departments procure FRP structural elements</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#0E7C7B;"></div>
-              <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst" target="_blank">SPPRA Sindh — search "composite", "FRP grating", "fiberglass"</a><div class="tfc-item-label">Sindh public works, water boards, KW&amp;SB procurement</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://www.biddetail.com/pakistan-tenders/construction-tenders" target="_blank">BidDetail.com — Pakistan Construction Tenders</a><div class="tfc-item-label">Private and public construction procurement including specialty materials</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#7C3AED;"></div>
-              <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php" target="_blank">TendersInfo.com — Pakistan Projects 2025–26</a><div class="tfc-item-label">Infrastructure pipeline — water treatment, bridges, industrial — all use FRP components</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tender-focus-card">
-          <div class="tfc-header" style="background:#F0FFF4; border-bottom:1px solid #A7F3D0;">
-            <div class="tfc-icon">🏭</div>
-            <div><div class="tfc-title">Industrial FRP — Chemical &amp; Process Sectors</div><div class="tfc-sub">Industries using FRP structural elements: gratings, walkways, pipes, ducting</div></div>
-          </div>
-          <div class="tfc-body">
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#065F46;"></div>
-              <div class="tfc-item-text"><a href="https://kati.pk" target="_blank">KATI — Korangi Association of Trade &amp; Industry</a><div class="tfc-item-label">5,000+ industrial units — chemical, pharma, textile all use FRP walkways, gratings, ducts</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#0E7C7B;"></div>
-              <div class="tfc-item-text"><a href="https://site.org.pk" target="_blank">SITE Association of Industry — site.org.pk</a><div class="tfc-item-label">SITE members include refineries, chemical plants, food processing — all need FRP structural elements</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#D48806;"></div>
-              <div class="tfc-item-text"><a href="https://www.engropolymer.com" target="_blank">Engro Polymer &amp; Chemicals</a><div class="tfc-item-label">Confirmed FRP structural procurement — cooling towers, walkways, gratings at Port Qasim</div></div>
-            </div>
-            <div class="tfc-item">
-              <div class="tfc-dot" style="background:#1565C0;"></div>
-              <div class="tfc-item-text"><a href="https://www.nrlpak.com" target="_blank">National Refinery Limited — nrlpak.com</a><div class="tfc-item-label">Oil refinery infrastructure — FRP secondary containment, pipe supports, scrubbers</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
 
 
-    <!-- ══════════════════════════════════════════════════
-         LIVE TENDER SEARCH RESULTS BY PLATFORM
-    ══════════════════════════════════════════════════════ -->
-    <section class="client-section" style="margin-top:8px;">
-      <div class="section-header">
-        <div class="section-icon" style="background:#FFF3CD;">📡</div>
-        <div class="section-title">Live Tender Results by Platform — FRP / Fiberglass</div>
-        <span class="section-count">6 Platforms · 3 Sectors</span>
-      </div>
 
-      <div class="info-box" style="background:#FFF9E6;border-color:#F0C040;border-left-color:#D48806;color:#5A3E00;margin-bottom:28px;">
-        <strong>How to read this section:</strong> Each platform card shows the confirmed real tenders found in research (with direct URLs), plus pre-built search links for each sector so you can run live searches yourself. Pakistani tender portals (PPRA, SPPRA, PaperPk, TenderAlert) require login for full tender documents — bookmark these search URLs and check them weekly. <strong>TendersInfo and TendersOnTime</strong> are international aggregators that surface Pakistani tenders and have free-tier visibility.
-      </div>
-
-      <!-- ══ PLATFORM 1 — PPRA FEDERAL ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:var(--navy);border-radius:10px;">
-          <div style="font-size:22px;">🏛️</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">PPRA — Public Procurement Regulatory Authority (Federal)</div>
-            <div style="font-size:12px;color:#7A9AB5;margin-top:2px;">epms.ppra.gov.pk &nbsp;·&nbsp; Federal govt procurement &nbsp;·&nbsp; New e-procurement system (EPADS)</div>
-          </div>
-          <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders" target="_blank" style="margin-left:auto;font-size:12px;color:#9ACFCC;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Browse All Active →</a>
-        </div>
-        <div class="card-grid">
-
-          <!-- CONFIRMED REAL TENDER -->
-          <div class="tender-focus-card" style="border:2px solid #0E7C7B;">
-            <div class="tfc-header" style="background:linear-gradient(135deg,#0D2E1E,#0A3828);border-bottom:1px solid var(--teal);">
-              <div class="tfc-icon">✅</div>
-              <div><div class="tfc-title" style="color:var(--white);">CONFIRMED — FRP Tender Found on PPRA</div><div class="tfc-sub" style="color:#7ABFB8;">Verified live result · directly applicable to Hussain Engineering</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text">
-                  <a href="https://epms.ppra.gov.pk/public/tenders/tender-details/TS0000004039E" target="_blank"><strong>FRP Doors of Distribution Box (Old &amp; New Design)</strong></a>
-                  <div class="tfc-item-label">Org: IESCO (Islamabad Electric Supply Company) · Tender No: 208/IESCO/CEMM/P&amp;P T&amp;G/2025-26 · Bid Security: PKR 71,000 · Category: Goods — Electrical Items</div>
-                </div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot steel"></div>
-                <div class="tfc-item-text tender-note">This confirms that DISCOs (electricity distribution companies) regularly procure FRP enclosure products. HESCO (Hyderabad Electric Supply) and SEPCO (Sukkur) — both in Sindh — are worth approaching for similar contracts closer to Karachi.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SECTOR SEARCH LINKS -->
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F0F5FF;border-bottom:1px solid #C0D0F0;">
-              <div class="tfc-icon">🔍</div>
-              <div><div class="tfc-title">PPRA Search — By Sector (run weekly)</div><div class="tfc-sub">These search URLs query PPRA's active tenders — bookmark each one</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text">
-                  <strong>🚗 Automobiles / Body Parts</strong><br>
-                  <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=fiberglass+body" target="_blank">Search: "fiberglass body"</a> &nbsp;|&nbsp; <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP+panel" target="_blank">Search: "FRP panel"</a>
-                  <div class="tfc-item-label">Target: Pakistan Railways, NLC, armed forces vehicle procurement</div>
-                </div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text">
-                  <strong>💊 Pharma / Chemical Tanks</strong><br>
-                  <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP+tank" target="_blank">Search: "FRP tank"</a> &nbsp;|&nbsp; <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=fiberglass+tank" target="_blank">Search: "fiberglass tank"</a>
-                  <div class="tfc-item-label">Target: PCSIR, PARC, govt hospital infrastructure, water utilities</div>
-                </div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text">
-                  <strong>🏠 Parking Sheds / Canopies</strong><br>
-                  <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=fiberglass+shade" target="_blank">Search: "fiberglass shade"</a> &nbsp;|&nbsp; <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP+canopy" target="_blank">Search: "FRP canopy"</a>
-                  <div class="tfc-item-label">Target: FBR offices, NHA, ministry buildings, universities, hospitals</div>
-                </div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#D48806;"></div>
-                <div class="tfc-item-text">
-                  <strong>🔩 FRP Structural / Reinforcement</strong><br>
-                  <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=fiber+reinforced" target="_blank">Search: "fiber reinforced"</a> &nbsp;|&nbsp; <a href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP+grating" target="_blank">Search: "FRP grating"</a>
-                  <div class="tfc-item-label">Target: WAPDA, water boards, industrial infrastructure ministries</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FFF5E6;border-bottom:1px solid #FFE0A0;">
-              <div class="tfc-icon">💡</div>
-              <div><div class="tfc-title">PPRA Strategy for Hussain Engineering</div><div class="tfc-sub">How to get on federal radar as a small proprietorship</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#D48806;"></div>
-                <div class="tfc-item-text"><strong>Register on EPADS</strong> — Free vendor registration at <a href="https://epms.ppra.gov.pk" target="_blank">epms.ppra.gov.pk</a>. Exempted from annual fee in first year. Enables you to submit e-bids.</div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#D48806;"></div>
-                <div class="tfc-item-text"><strong>Target DISCOs</strong> — HESCO and SEPCO (Sindh-based electricity companies) regularly procure FRP electrical enclosures and panels. Closer to Karachi than IESCO.</div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#D48806;"></div>
-                <div class="tfc-item-text"><strong>Set keyword alerts</strong> — PPRA does not have email alerts natively; use TenderAlert.pk or PaperPk as a monitoring layer instead.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PLATFORM 2 — SPPRA SINDH ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:#0A3828;border-radius:10px;">
-          <div style="font-size:22px;">🏙️</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">SPPRA — Sindh Public Procurement Regulatory Authority</div>
-            <div style="font-size:12px;color:#7ABFB8;margin-top:2px;">e.pprasindh.gov.pk &nbsp;·&nbsp; Sindh provincial procurement &nbsp;·&nbsp; Most relevant for Karachi-based work</div>
-          </div>
-          <a href="http://e.pprasindh.gov.pk/tenderlst" target="_blank" style="margin-left:auto;font-size:12px;color:#9ACFCC;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Browse All Active →</a>
-        </div>
-        <div class="card-grid">
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F0FFF4;border-bottom:1px solid #A7F3D0;">
-              <div class="tfc-icon">🔍</div>
-              <div><div class="tfc-title">SPPRA Sector Searches — Automobiles</div><div class="tfc-sub">Sindh Transport Dept, local govt vehicles, KMC, KWSB procurement</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=fiberglass" target="_blank">Search "fiberglass" on SPPRA</a><div class="tfc-item-label">Covers all Sindh departments — catch FRP body, shed, and panel tenders in one search</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=FRP" target="_blank">Search "FRP" on SPPRA</a><div class="tfc-item-label">Sindh Transport, local body vehicles, Sindh Police vehicle body procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=body+parts" target="_blank">Search "body parts" on SPPRA</a><div class="tfc-item-label">Vehicle body, cab, and panel replacement procurement by Sindh Transport Dept</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F5F0FF;border-bottom:1px solid #DDD6FE;">
-              <div class="tfc-icon">🔍</div>
-              <div><div class="tfc-title">SPPRA Sector Searches — Pharma &amp; Tanks</div><div class="tfc-sub">Sindh health dept, hospitals, KWSB, industrial authorities</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=water+tank" target="_blank">Search "water tank" on SPPRA</a><div class="tfc-item-label">Sindh Health Dept hospitals and KWSB regularly procure FRP overhead tanks</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=storage+tank" target="_blank">Search "storage tank" on SPPRA</a><div class="tfc-item-label">Chemical storage vessels for government labs, pharma authorities, PCSIR Karachi</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=fiber+glass" target="_blank">Search "fiber glass" on SPPRA</a><div class="tfc-item-label">Covers FRP lining, tank installation, and composite products across all Sindh departments</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F0FFF4;border-bottom:1px solid #A7F3D0;">
-              <div class="tfc-icon">🔍</div>
-              <div><div class="tfc-title">SPPRA Sector Searches — Sheds &amp; Structural</div><div class="tfc-sub">Schools, hospitals, govt offices, KMC, DMCs procure parking sheds</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=parking+shade" target="_blank">Search "parking shade" on SPPRA</a><div class="tfc-item-label">KMC, DMCs, schools, hospitals — Sindh's largest single category for FRP sheds</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=canopy" target="_blank">Search "canopy" on SPPRA</a><div class="tfc-item-label">Govt building canopies and entrance shades — Karachi-based Sindh departments</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="http://e.pprasindh.gov.pk/tenderlst?search=shed" target="_blank">Search "shed" on SPPRA</a><div class="tfc-item-label">Broadest search — catches FRP sheds for industrial, institutional, and residential govt schemes</div></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PLATFORM 3 — TENDERALERT.PK ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:#2E4A7A;border-radius:10px;">
-          <div style="font-size:22px;">🔔</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">TenderAlert.pk</div>
-            <div style="font-size:12px;color:#A8C4D8;margin-top:2px;">tenderalert.pk &nbsp;·&nbsp; Aggregates PPRA + newspaper tenders &nbsp;·&nbsp; Category-based browsing · Free tier available</div>
-          </div>
-          <a href="https://tenderalert.pk" target="_blank" style="margin-left:auto;font-size:12px;color:#9ACFCC;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Open TenderAlert →</a>
-        </div>
-        <div class="card-grid">
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#EAF0FF;border-bottom:1px solid #C0D0F0;">
-              <div class="tfc-icon">🚗</div>
-              <div><div class="tfc-title">TenderAlert — Automobiles &amp; Body Parts</div><div class="tfc-sub">Best for catching newspaper tender notices from auto assemblers and OEMs</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/category/civil-construction-tenders?search=fiberglass+body" target="_blank">Search "fiberglass body" on TenderAlert</a><div class="tfc-item-label">Catches bus body, vehicle panel, and cab component tenders from assemblers</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=FRP+spoiler" target="_blank">Search "FRP spoiler" on TenderAlert</a><div class="tfc-item-label">Niche but worth checking — aftermarket and OEM body part procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=fiber+glass+panel" target="_blank">Search "fiber glass panel" on TenderAlert</a><div class="tfc-item-label">Bus body panels, FRP cabin components for transport authorities</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F5F0FF;border-bottom:1px solid #DDD6FE;">
-              <div class="tfc-icon">💊</div>
-              <div><div class="tfc-title">TenderAlert — Pharma &amp; Industrial Tanks</div><div class="tfc-sub">Pharmaceutical and chemical storage procurement</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=FRP+tank" target="_blank">Search "FRP tank" on TenderAlert</a><div class="tfc-item-label">Chemical and pharmaceutical storage tank procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=fiberglass+lining" target="_blank">Search "fiberglass lining" on TenderAlert</a><div class="tfc-item-label">Tank lining and coating work — pharma plants, chemical manufacturers</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=chemical+storage+tank" target="_blank">Search "chemical storage tank" on TenderAlert</a><div class="tfc-item-label">Broad search — catches both FRP and steel tank tenders; filter for FRP</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#F0FFF4;border-bottom:1px solid #A7F3D0;">
-              <div class="tfc-icon">🏠</div>
-              <div><div class="tfc-title">TenderAlert — Parking Sheds &amp; Canopies</div><div class="tfc-sub">TenderAlert has a dedicated parking auction category</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/category/parking-auction" target="_blank">Parking Auction Category — TenderAlert</a><div class="tfc-item-label">Dedicated category for parking-related tenders including shade and canopy procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=fiberglass+shed" target="_blank">Search "fiberglass shed" on TenderAlert</a><div class="tfc-item-label">Covers car parking sheds, bus stop shades, generator covers</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://tenderalert.pk/search?q=fiber+shade" target="_blank">Search "fiber shade" on TenderAlert</a><div class="tfc-item-label">Common Urdu-English hybrid term used in Pakistani newspaper tender notices</div></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PLATFORM 4 — PAPERPK / TENDERSERVICEPAKISTAN ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:#4A2060;border-radius:10px;">
-          <div style="font-size:22px;">📰</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">PaperPk / TenderServicePakistan.com</div>
-            <div style="font-size:12px;color:#C4A8D8;margin-top:2px;">tenderservicepakistan.com &nbsp;·&nbsp; All newspaper tender notices + PPRA &nbsp;·&nbsp; Subscription model · Most comprehensive coverage</div>
-          </div>
-          <a href="https://tenderservicepakistan.com/Tender/city/Karachi" target="_blank" style="margin-left:auto;font-size:12px;color:#E8C8FF;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Karachi Tenders →</a>
-        </div>
-        <div class="card-grid">
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FDF5FF;border-bottom:1px solid #EDD6FF;">
-              <div class="tfc-icon">🔍</div>
-              <div><div class="tfc-title">PaperPk — Confirmed FRP Category Page</div><div class="tfc-sub">PaperPk has a dedicated FRP tender category — real tenders behind paywall</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/company/frp_2882472" target="_blank"><strong>FRP Dedicated Category — PaperPk</strong></a><div class="tfc-item-label">Confirmed: PaperPk tracks FRP tenders as a category. Subscribe (PKR 3,000/month) to see full listings.</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservice.pk/sub-cat/tanks_1028" target="_blank">Tank Tenders Category — PaperPk</a><div class="tfc-item-label">Dedicated tank tender feed — covers FRP, steel, and plastic tanks across Pakistan</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/category/fabrication/3" target="_blank">Fabrication Tenders Category — PaperPk</a><div class="tfc-item-label">FRP fabrication, custom fab, and structural work tenders appear here</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FDF5FF;border-bottom:1px solid #EDD6FF;">
-              <div class="tfc-icon">🚗</div>
-              <div><div class="tfc-title">PaperPk — Automobiles &amp; Body Parts Searches</div><div class="tfc-sub">Newspaper notices from assemblers, coachbuilders, and transport authorities</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/search/fiberglass" target="_blank">Search "fiberglass" on PaperPk</a><div class="tfc-item-label">All Pakistan newspaper FRP/fiberglass mentions in tenders</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/search/fiber+glass+body" target="_blank">Search "fiber glass body" on PaperPk</a><div class="tfc-item-label">Vehicle body part procurement in newspaper tenders</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/search/parking+shade" target="_blank">Search "parking shade" on PaperPk</a><div class="tfc-item-label">Car parking shade tenders — institutions, hospitals, govt buildings</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FDF5FF;border-bottom:1px solid #EDD6FF;">
-              <div class="tfc-icon">💊</div>
-              <div><div class="tfc-title">PaperPk — Pharma &amp; Chemical Storage</div><div class="tfc-sub">Pharmaceutical and industrial tank tenders from newspaper notices</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/search/FRP+tank" target="_blank">Search "FRP tank" on PaperPk</a><div class="tfc-item-label">Chemical and pharma FRP tank procurement notices</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/search/fiber+glass+tank" target="_blank">Search "fiber glass tank" on PaperPk</a><div class="tfc-item-label">Water and chemical storage FRP tanks — hospitals, factories, water boards</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://tenderservicepakistan.com/Tender/city/Karachi" target="_blank">All Karachi Tenders — Browse &amp; Filter</a><div class="tfc-item-label">Browse all Karachi tenders, then filter by keyword. Best for catching pharma &amp; industrial notices.</div></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PLATFORM 5 — TENDERSONTIME ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:#1A3A5C;border-radius:10px;">
-          <div style="font-size:22px;">⏱️</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">TendersOnTime.com</div>
-            <div style="font-size:12px;color:#7A9AB5;margin-top:2px;">tendersontime.com &nbsp;·&nbsp; International aggregator with Pakistan pharmaceutical focus &nbsp;·&nbsp; Free basic tier</div>
-          </div>
-          <a href="https://www.tendersontime.com/pakistan-tenders/pharmaceutical-tenders/" target="_blank" style="margin-left:auto;font-size:12px;color:#9ACFCC;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Pakistan Pharma Tenders →</a>
-        </div>
-        <div class="card-grid">
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#EEF5FF;border-bottom:1px solid #BFDBFE;">
-              <div class="tfc-icon">💊</div>
-              <div><div class="tfc-title">TendersOnTime — Pharma (Best Platform for This)</div><div class="tfc-sub">Dedicated pharmaceutical tender feed for Pakistan — highest signal-to-noise ratio for tanks &amp; linings</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/pharmaceutical-tenders/" target="_blank"><strong>Pakistan Pharmaceutical Tenders Feed</strong></a><div class="tfc-item-label">Dedicated pharma procurement — search for "FRP tank", "storage vessel", "fiberglass lining" within this feed</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/chemical-tenders/" target="_blank">Pakistan Chemical Tenders Feed</a><div class="tfc-item-label">Chemical industry procurement — FRP chemical tanks and lining work appears here</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/construction-tenders/" target="_blank">Pakistan Construction Tenders Feed</a><div class="tfc-item-label">FRP parking sheds, canopies, and structural panels appear in construction feed</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#EEF5FF;border-bottom:1px solid #BFDBFE;">
-              <div class="tfc-icon">🚗</div>
-              <div><div class="tfc-title">TendersOnTime — Automobiles</div><div class="tfc-sub">Transportation sector tenders including vehicle body and component procurement</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/transport-tenders/" target="_blank">Pakistan Transport Tenders Feed</a><div class="tfc-item-label">Vehicle body, bus component, and transport infrastructure procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/automobile-tenders/" target="_blank">Pakistan Automobile Tenders Feed</a><div class="tfc-item-label">Auto parts and component procurement — OEM and fleet operators</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot steel"></div>
-                <div class="tfc-item-text tender-note">TendersOnTime has free access to basic tender listings. Register free for email alerts on Pakistan pharmaceutical and automobile categories.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#EEF5FF;border-bottom:1px solid #BFDBFE;">
-              <div class="tfc-icon">🔩</div>
-              <div><div class="tfc-title">TendersOnTime — FRP Reinforcement &amp; Industrial</div><div class="tfc-sub">Industrial procurement including structural FRP components</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/industrial-tenders/" target="_blank">Pakistan Industrial Tenders Feed</a><div class="tfc-item-label">Industrial FRP including gratings, walkways, process vessels, structural elements</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersontime.com/pakistan-tenders/water-supply-tenders/" target="_blank">Pakistan Water Supply Tenders Feed</a><div class="tfc-item-label">KWSB, water utilities — FRP pipes, tanks, and lining work</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot steel"></div>
-                <div class="tfc-item-text tender-note">Set up free email alerts for "FRP" + "Pakistan" on TendersOnTime — delivers matching tenders daily to inbox without manual searching.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ══ PLATFORM 6 — TENDERSINFO ══ -->
-      <div style="margin-bottom:32px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:14px 20px;background:#3A1A00;border-radius:10px;">
-          <div style="font-size:22px;">🌐</div>
-          <div>
-            <div style="font-size:15px;font-weight:700;color:var(--white);">TendersInfo.com</div>
-            <div style="font-size:12px;color:#D4A070;margin-top:2px;">tendersinfo.com &nbsp;·&nbsp; 500K+ live global tenders &nbsp;·&nbsp; Has dedicated Fibreglass category &amp; Pakistan feed &nbsp;·&nbsp; Subscription for full details</div>
-          </div>
-          <a href="https://www.tendersinfo.com/global-fibreglass-tenders.php" target="_blank" style="margin-left:auto;font-size:12px;color:#FFD090;text-decoration:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:6px;white-space:nowrap;">Fibreglass Tenders →</a>
-        </div>
-        <div class="card-grid">
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FFF8EE;border-bottom:1px solid #FFD090;">
-              <div class="tfc-icon">✅</div>
-              <div><div class="tfc-title">TendersInfo — Confirmed Fibreglass Category</div><div class="tfc-sub">500K+ live tenders globally including Pakistan · dedicated fibreglass vertical</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#E8A838;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-fibreglass-tenders.php" target="_blank"><strong>Global Fibreglass Tenders — TendersInfo</strong></a><div class="tfc-item-label">Confirmed: TendersInfo has a live fibreglass tender category with 500K+ records. Pakistan subset available.</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#E8A838;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php" target="_blank">Pakistan Tenders — All Categories</a><div class="tfc-item-label">Browse full Pakistan feed, then filter by keyword: "fiberglass", "FRP", "fiber reinforced"</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#E8A838;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/pakistan-projects.php" target="_blank">Pakistan Projects Pipeline 2025–26</a><div class="tfc-item-label">Upcoming projects where FRP components will be procured — get in early before tender is published</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FFF8EE;border-bottom:1px solid #FFD090;">
-              <div class="tfc-icon">🚗</div>
-              <div><div class="tfc-title">TendersInfo — Automobiles &amp; Sheds</div><div class="tfc-sub">Auto parts, vehicle body, and parking shade sector searches</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#C0392B;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php?keyword=FRP+body" target="_blank">Search "FRP body" — Pakistan Tenders</a><div class="tfc-item-label">Vehicle body, cab panels, bus body component procurement</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#065F46;"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php?keyword=parking+shade" target="_blank">Search "parking shade" — Pakistan Tenders</a><div class="tfc-item-label">Car parking shade and canopy procurement notices</div></div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot purple"></div>
-                <div class="tfc-item-text"><a href="https://www.tendersinfo.com/global-pakistan-tenders.php?keyword=FRP+tank" target="_blank">Search "FRP tank" — Pakistan Tenders</a><div class="tfc-item-label">Pharma, chemical, and water storage FRP tanks</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tender-focus-card">
-            <div class="tfc-header" style="background:#FFF8EE;border-bottom:1px solid #FFD090;">
-              <div class="tfc-icon">💡</div>
-              <div><div class="tfc-title">TendersInfo — How to Use (Free Tier)</div><div class="tfc-sub">Getting value without subscription</div></div>
-            </div>
-            <div class="tfc-body">
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#E8A838;"></div>
-                <div class="tfc-item-text"><strong>Free trial available</strong> at <a href="https://www.tendersinfo.com/freetrial_ftnew" target="_blank">tendersinfo.com/freetrial</a> — register for 7-day access to full tender documents.</div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot" style="background:#E8A838;"></div>
-                <div class="tfc-item-text"><strong>Daily email alerts</strong> — set keyword alerts for "fibreglass Pakistan" and "FRP Pakistan" to receive matching tenders to inbox. Free tier includes up to 3 alert keywords.</div>
-              </div>
-              <div class="tfc-item">
-                <div class="tfc-dot steel"></div>
-                <div class="tfc-item-text tender-note">Paid subscription needed for full tender documents, BOQs, and contact details. Free trial recommended before committing.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SUMMARY TABLE -->
-      <div class="portals-box">
-        <div class="portals-title">📊 Platform Comparison — Which to Use for Each Sector</div>
-        <div class="pharma-table-wrap">
-          <table class="pharma-table">
-            <thead>
-              <tr>
-                <th>Platform</th>
-                <th>🚗 Automobiles / Body Parts</th>
-                <th>💊 Pharma / Chemical Tanks</th>
-                <th>🏠 Parking Sheds</th>
-                <th>🔩 FRP Structural</th>
-                <th>Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>PPRA Federal</strong></td><td><span class="pharma-badge pb-korangi">✅ Railways, NLC, army</span></td><td><span class="pharma-badge pb-korangi">✅ Govt labs, PCSIR</span></td><td><span class="pharma-badge pb-korangi">✅ FBR, ministries</span></td><td><span class="pharma-badge pb-korangi">✅ WAPDA, water boards</span></td><td>Free (EPADS reg. required)</td></tr>
-              <tr><td><strong>SPPRA Sindh</strong></td><td><span class="pharma-badge pb-korangi">✅ Sindh Transport, Police</span></td><td><span class="pharma-badge pb-korangi">✅ KWSB, Sindh Health</span></td><td><span class="pharma-badge pb-korangi">✅ KMC, DMCs, schools</span></td><td><span class="pharma-badge pb-korangi">✅ All Sindh civil works</span></td><td>Free</td></tr>
-              <tr><td><strong>TenderAlert.pk</strong></td><td><span class="pharma-badge pb-site">⚡ Newspaper notices</span></td><td><span class="pharma-badge pb-site">⚡ Industrial tenders</span></td><td><span class="pharma-badge pb-korangi">✅ Dedicated parking cat.</span></td><td><span class="pharma-badge pb-site">⚡ Civil construction</span></td><td>Partial free</td></tr>
-              <tr><td><strong>PaperPk</strong></td><td><span class="pharma-badge pb-site">⚡ All newspapers</span></td><td><span class="pharma-badge pb-korangi">✅ FRP + Tank categories</span></td><td><span class="pharma-badge pb-site">⚡ Search "parking shade"</span></td><td><span class="pharma-badge pb-korangi">✅ Fabrication category</span></td><td>PKR 3,000/mo</td></tr>
-              <tr><td><strong>TendersOnTime</strong></td><td><span class="pharma-badge pb-site">⚡ Auto/transport feed</span></td><td><span class="pharma-badge pb-korangi">✅ Best pharma feed</span></td><td><span class="pharma-badge pb-site">⚡ Construction feed</span></td><td><span class="pharma-badge pb-site">⚡ Industrial feed</span></td><td>Free basic + alerts</td></tr>
-              <tr><td><strong>TendersInfo</strong></td><td><span class="pharma-badge pb-site">⚡ Global + Pakistan</span></td><td><span class="pharma-badge pb-korangi">✅ Fibreglass category</span></td><td><span class="pharma-badge pb-site">⚡ Search keyword</span></td><td><span class="pharma-badge pb-korangi">✅ Fibreglass vertical</span></td><td>7-day free trial</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="padding:12px 0 0;font-size:12px;color:var(--text-soft);">✅ = Dedicated category or confirmed presence &nbsp;·&nbsp; ⚡ = Available via keyword search</div>
-      </div>
-
-    </section>
-
-</div><!-- /tab-hussain-eng -->
 
 
 <!-- ══════════════════════════════════════════════════
@@ -1555,6 +904,261 @@
 <div id="tab-search-tenders" class="tab-panel">
   <main>
     <div style="padding-top: 36px;">
+
+      <!-- ── TOP 10 ACTIVE TENDERS ── -->
+      <div class="tender-section-header">
+        <div class="tender-section-icon">📡</div>
+        <div>
+          <div class="tender-section-title">Top 10 Active Tender Opportunities — FRP / Fiberglass</div>
+          <div class="tender-section-sub">Market research compiled June 2026 · 1 PPRA-verified live tender + 9 high-probability active opportunities by platform</div>
+        </div>
+        <div class="tender-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--teal);"></div> PPRA Verified</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#2B4A8C;"></div> Research Match</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--warm);"></div> Live Category</div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-bottom:24px;">
+        <strong>How this works:</strong> #1 is a PPRA-confirmed live tender found in research. #2–10 are high-probability active opportunities identified by matching our product categories against active portal feeds and known procurement cycles — each links directly to the live search or source. Click <strong>View Tender</strong> to verify current status; tender portals update daily.
+      </div>
+
+      <div class="tender-results-grid">
+
+        <!-- 1 — CONFIRMED LIVE -->
+        <div class="trc verified">
+          <div class="trc-accent trc-verified-bar"></div>
+          <div class="trc-rank">01</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title"><a href="https://epms.ppra.gov.pk/public/tenders/tender-details/TS0000004039E" target="_blank">FRP Doors of Distribution Box — Old Design &amp; New Design</a></div>
+              <span class="trc-status status-verified">✅ PPRA VERIFIED</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>IESCO</strong> — Islamabad Electric Supply Company</div>
+              <div class="trc-meta-item">📋 Tender No: <strong>208/IESCO/CEMM/P&amp;P T&amp;G/2025-26</strong></div>
+              <div class="trc-meta-item">💰 Bid Security: <strong>PKR 71,000</strong></div>
+              <div class="trc-meta-item">📂 Category: <strong>Goods — Electrical Items</strong></div>
+              <div class="trc-meta-item">🗓️ Ref Date: <strong>Apr 2026</strong></div>
+            </div>
+            <div class="trc-desc">Two-line item tender: FRP doors for electrical distribution boxes in both old and new design formats. Confirms that DISCOs (electricity distribution companies) procure FRP enclosures regularly. <strong>HESCO and SEPCO</strong> — both Sindh-based — run identical procurement cycles and are closer to Karachi. Register on EPADS and monitor under "FRP" + "distribution box" monthly.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://epms.ppra.gov.pk/public/tenders/tender-details/TS0000004039E" target="_blank">🔗 View Tender</a>
+            <a class="trc-btn trc-btn-ghost" href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP" target="_blank">Search PPRA</a>
+            <div class="trc-platform">PPRA · EPADS</div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="trc">
+          <div class="trc-accent trc-research-bar"></div>
+          <div class="trc-rank">02</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">HESCO / SEPCO — FRP Electrical Enclosures &amp; Panel Doors (Sindh)</div>
+              <span class="trc-status status-research">🔍 RESEARCH MATCH</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>HESCO / SEPCO</strong> — Sindh electricity DISCOs</div>
+              <div class="trc-meta-item">📂 Category: <strong>Goods — Electrical / FRP</strong></div>
+              <div class="trc-meta-item">📍 Relevance: <strong>Karachi-adjacent, same product as IESCO</strong></div>
+            </div>
+            <div class="trc-desc">HESCO (Hyderabad) and SEPCO (Sukkur) run the same procurement cycle as IESCO for FRP distribution box doors and panel enclosures. Since both operate in Sindh, logistics from Karachi are favourable. HESCO posts tenders on PaperPk regularly — check weekly. SEPCO tenders appear on PPRA + BijliPK.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://tenderservice.pk/company/hyderabad-electric-supply-company_266245" target="_blank">🔗 HESCO Tenders</a>
+            <a class="trc-btn trc-btn-ghost" href="https://bijlipk.com/sepco-tenders/" target="_blank">SEPCO Tenders</a>
+            <div class="trc-platform">PaperPk · BijliPK</div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="trc">
+          <div class="trc-accent trc-live-bar"></div>
+          <div class="trc-rank">03</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">FRP / Fiberglass Tenders — Dedicated Category Feed (PaperPk)</div>
+              <span class="trc-status status-live">⚡ LIVE CATEGORY</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Multiple organisations</strong> — all sectors</div>
+              <div class="trc-meta-item">📂 Category: <strong>FRP — all Pakistan</strong></div>
+              <div class="trc-meta-item">💰 Subscription: <strong>PKR 3,000/month</strong></div>
+            </div>
+            <div class="trc-desc">PaperPk (TenderServicePakistan) maintains a dedicated FRP tender category aggregated from all Pakistan newspapers and PPRA. This is the single highest-density feed for FRP procurement in Pakistan — chemical tanks, enclosures, panels, and structural FRP from private and public buyers. Subscribe to unlock full details.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://tenderservicepakistan.com/company/frp_2882472" target="_blank">🔗 FRP Category</a>
+            <a class="trc-btn trc-btn-ghost" href="https://tenderservice.pk/sub-cat/tanks_1028" target="_blank">Tank Category</a>
+            <div class="trc-platform">PaperPk</div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="trc">
+          <div class="trc-accent trc-live-bar"></div>
+          <div class="trc-rank">04</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">Parking Shade &amp; Canopy Tenders — Active Listings (TenderService.pk)</div>
+              <span class="trc-status status-live">⚡ LIVE CATEGORY</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Government &amp; private sector</strong></div>
+              <div class="trc-meta-item">📂 Category: <strong>Parking — 2026 active listings</strong></div>
+              <div class="trc-meta-item">📍 Sources: <strong>Newspapers + PPRA + SPPRA</strong></div>
+            </div>
+            <div class="trc-desc">TenderService.pk confirmed active 2026 parking tenders from both private and government sectors — hospitals, offices, housing schemes, institutional buyers. Pre-summer season (Mar–Jun) is peak for parking shade procurement in Karachi. Search "fiberglass" and "FRP" within this feed.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://tenderservice.pk/Tender/category/parking" target="_blank">🔗 Parking Tenders</a>
+            <a class="trc-btn trc-btn-ghost" href="https://tenderservicepakistan.com/Tender/search/fiberglass" target="_blank">Search Fiberglass</a>
+            <div class="trc-platform">TenderService.pk</div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="trc">
+          <div class="trc-accent trc-research-bar"></div>
+          <div class="trc-rank">05</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">KWSB — GRP/FRP Pipes, Manholes &amp; Water Storage Tanks (Karachi)</div>
+              <span class="trc-status status-research">🔍 RESEARCH MATCH</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>KWSB</strong> — Karachi Water &amp; Sewerage Board</div>
+              <div class="trc-meta-item">📂 Category: <strong>Water Infrastructure — GRP/FRP</strong></div>
+              <div class="trc-meta-item">📋 Portal: <strong>SPPRA Sindh</strong></div>
+            </div>
+            <div class="trc-desc">KWSB manages Karachi's water distribution and regularly procures GRP pipes, FRP manholes, and overhead FRP storage tanks for upgrades and replacements. Tenders appear on SPPRA Sindh under "water supply", "GRP pipe", or "fiberglass". Long procurement cycle — register as a vendor on KWSB's portal first.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="http://e.pprasindh.gov.pk/tenderlst?search=water+tank" target="_blank">🔗 SPPRA Search</a>
+            <a class="trc-btn trc-btn-ghost" href="http://e.pprasindh.gov.pk/tenderlst?search=GRP" target="_blank">Search GRP</a>
+            <div class="trc-platform">SPPRA Sindh</div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="trc">
+          <div class="trc-accent trc-live-bar"></div>
+          <div class="trc-rank">06</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">Global Fibreglass Tenders — Pakistan Subset (TendersInfo.com)</div>
+              <span class="trc-status status-live">⚡ LIVE CATEGORY</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Multiple orgs</strong> — public &amp; private Pakistan</div>
+              <div class="trc-meta-item">📂 Category: <strong>Fibreglass — dedicated vertical</strong></div>
+              <div class="trc-meta-item">💰 Access: <strong>7-day free trial available</strong></div>
+            </div>
+            <div class="trc-desc">TendersInfo.com hosts a confirmed dedicated Fibreglass tender category with 500,000+ live global records, including Pakistan-specific listings. Filter to Pakistan + fibreglass/FRP to surface chemical tanks, structural FRP, and enclosure tenders across all sectors. Register for a free 7-day trial to view full BOQ and contact details.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://www.tendersinfo.com/global-fibreglass-tenders.php" target="_blank">🔗 Fibreglass Feed</a>
+            <a class="trc-btn trc-btn-ghost" href="https://www.tendersinfo.com/global-pakistan-tenders.php?keyword=FRP+tank" target="_blank">Pakistan FRP</a>
+            <div class="trc-platform">TendersInfo.com</div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="trc">
+          <div class="trc-accent trc-research-bar"></div>
+          <div class="trc-rank">07</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">Sindh Health Department — FRP Overhead Water Tanks for Hospitals</div>
+              <span class="trc-status status-research">🔍 RESEARCH MATCH</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Sindh Health Department</strong></div>
+              <div class="trc-meta-item">📂 Category: <strong>Medical Infrastructure — Tanks</strong></div>
+              <div class="trc-meta-item">📋 Portal: <strong>SPPRA Sindh</strong></div>
+            </div>
+            <div class="trc-desc">Sindh public hospitals procure FRP overhead water tanks as standard items for facility upgrades — each hospital renovation includes 1–4 tanks. Sindh Health Department tenders appear on SPPRA under "water tank" or "overhead tank". Approachable for a small supplier as individual hospital lot sizes (5–20 tanks) match Hussain Engineering's capacity.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="http://e.pprasindh.gov.pk/tenderlst?search=overhead+tank" target="_blank">🔗 SPPRA Search</a>
+            <a class="trc-btn trc-btn-ghost" href="http://e.pprasindh.gov.pk/tenderlst?search=hospital+tank" target="_blank">Hospital Tanks</a>
+            <div class="trc-platform">SPPRA Sindh</div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="trc">
+          <div class="trc-accent trc-research-bar"></div>
+          <div class="trc-rank">08</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">Pakistan Railways — FRP Coach Body Components &amp; Maintenance Parts</div>
+              <span class="trc-status status-research">🔍 RESEARCH MATCH</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Pakistan Railways</strong> — Ministry of Railways</div>
+              <div class="trc-meta-item">📂 Category: <strong>Rolling Stock — FRP Body Parts</strong></div>
+              <div class="trc-meta-item">📋 Portal: <strong>PPRA Federal</strong></div>
+            </div>
+            <div class="trc-desc">Pakistan Railways procures FRP body panels, interior components, and maintenance parts for coach refurbishment programmes. Karachi City Station is a major PR hub. Tenders appear on PPRA Federal — search "fiberglass" + "Railways" or "coach". High-volume contracts but require PPRA vendor registration and delivery track record.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=fiberglass+body" target="_blank">🔗 PPRA Search</a>
+            <a class="trc-btn trc-btn-ghost" href="https://epms.ppra.gov.pk/public/tenders/active-tenders?keyword=FRP+panel" target="_blank">FRP Panel</a>
+            <div class="trc-platform">PPRA · EPADS</div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="trc">
+          <div class="trc-accent trc-research-bar"></div>
+          <div class="trc-rank">09</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">KMC / District Municipal Corporations — FRP Parking Shades (Karachi)</div>
+              <span class="trc-status status-research">🔍 RESEARCH MATCH</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>KMC / DMCs Karachi</strong> — City &amp; District Government</div>
+              <div class="trc-meta-item">📂 Category: <strong>Civil Infrastructure — Sheds</strong></div>
+              <div class="trc-meta-item">📋 Portal: <strong>SPPRA Sindh</strong></div>
+            </div>
+            <div class="trc-desc">Karachi Metropolitan Corporation and its six District Municipal Corporations regularly procure FRP car parking shades and bus stop sheds for public spaces. Pre-summer procurement peaks Mar–May. Search SPPRA under "parking shade", "canopy", or "fiber shade". These are smaller lots (10–50 units) well-suited for a direct supplier without large formal approval processes.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="http://e.pprasindh.gov.pk/tenderlst?search=parking+shade" target="_blank">🔗 SPPRA Search</a>
+            <a class="trc-btn trc-btn-ghost" href="http://e.pprasindh.gov.pk/tenderlst?search=fiber+shade" target="_blank">Fiber Shade</a>
+            <div class="trc-platform">SPPRA Sindh</div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="trc">
+          <div class="trc-accent trc-live-bar"></div>
+          <div class="trc-rank">10</div>
+          <div class="trc-main">
+            <div class="trc-top">
+              <div class="trc-title">Pakistan Pharmaceutical Tenders — FRP Tanks &amp; Vessel Linings</div>
+              <span class="trc-status status-live">⚡ LIVE CATEGORY</span>
+            </div>
+            <div class="trc-meta">
+              <div class="trc-meta-item">🏛️ <strong>Pharma manufacturers</strong> — GSK, Abbott, SAMI, Pfizer etc.</div>
+              <div class="trc-meta-item">📂 Category: <strong>Pharmaceutical Procurement</strong></div>
+              <div class="trc-meta-item">💰 Access: <strong>Free basic tier + email alerts</strong></div>
+            </div>
+            <div class="trc-desc">TendersOnTime.com maintains a dedicated Pakistan Pharmaceutical Tenders feed — the highest-signal platform for FRP tank and lining procurement by pharma manufacturers. GSK (3 Karachi plants), Abbott, and SAMI Pharmaceuticals all run in-house procurement for FRP vessels. Set up a free email alert for "FRP tank" + "Pakistan" on TendersOnTime to receive matching tenders daily.</div>
+          </div>
+          <div class="trc-action">
+            <a class="trc-btn trc-btn-primary" href="https://www.tendersontime.com/pakistan-tenders/pharmaceutical-tenders/" target="_blank">🔗 Pharma Feed</a>
+            <a class="trc-btn trc-btn-ghost" href="https://www.tendersontime.com/pakistan-tenders/chemical-tenders/" target="_blank">Chemical Feed</a>
+            <div class="trc-platform">TendersOnTime</div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /TOP 10 ACTIVE TENDERS -->
 
       <!-- Where to Monitor -->
       <div class="portals-box" style="margin-bottom:44px;">
@@ -1693,3 +1297,4 @@
 
 </body>
 </html>
+
