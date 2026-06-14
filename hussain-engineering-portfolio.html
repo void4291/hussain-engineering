@@ -733,15 +733,18 @@ img{display:block;max-width:100%;}
   border-right:1px solid var(--line);
 }
 .logo-badge img{
-  height:34px;
+  height:52px;
   width:auto;
   max-width:170px;
   object-fit:contain;
-  filter:grayscale(100%) brightness(0) invert(1) opacity(0.45);
+  background:#fff;
+  padding:8px 14px;
+  border-radius:10px;
+  filter:grayscale(100%) opacity(0.6);
   transition:filter 0.4s ease, transform 0.4s ease;
 }
 .logo-badge:hover img{
-  filter:grayscale(0%) brightness(1) invert(0) opacity(1);
+  filter:grayscale(0%) opacity(1);
   transform:scale(1.06);
 }
 .logo-badge span{
@@ -756,7 +759,7 @@ img{display:block;max-width:100%;}
 .logo-badge:hover span{color:var(--amber);}
 @media(max-width:600px){
   .logo-badge{gap:24px;padding:0 28px;}
-  .logo-badge img{height:26px;max-width:120px;}
+  .logo-badge img{height:40px;max-width:120px;padding:6px 10px;}
 }
 .marquee-row.reverse{animation:marqueeRev 44s linear infinite;}
 .clients-block + .clients-block{margin-top:6px;}
@@ -1329,42 +1332,42 @@ footer{
 
   <div class="marquee-row">
     <div class="clients-block fwd">
-      <div class="logo-badge"><img src="https://logo.clearbit.com/nrlpak.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/prl.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/cnergyico.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/descon.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/gil.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/dha.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/wwfpak.org" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/uok.edu.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/nrlpak.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/prl.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/cnergyico.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/descon.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/gil.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/dha.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/wwfpak.org" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/uok.edu.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
+      <div class="logo-badge"><img src="logos/NRL.jpg" alt="National Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
+      <div class="logo-badge"><img src="logos/PRL.jpg" alt="Pakistan Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
+      <div class="logo-badge"><img src="logos/byco.jpg" alt="Byco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
+      <div class="logo-badge"><img src="logos/descon.jpg" alt="DESCON" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
+      <div class="logo-badge"><img src="logos/ghandara.jpg" alt="Ghandhara Industries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
+      <div class="logo-badge"><img src="logos/dha.jpg" alt="DHA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
+      <div class="logo-badge"><img src="logos/wwf.jpg" alt="WWF" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
+      <div class="logo-badge"><img src="logos/karachi%20university.jpg" alt="Karachi University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
+      <div class="logo-badge"><img src="logos/NRL.jpg" alt="National Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
+      <div class="logo-badge"><img src="logos/PRL.jpg" alt="Pakistan Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
+      <div class="logo-badge"><img src="logos/byco.jpg" alt="Byco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
+      <div class="logo-badge"><img src="logos/descon.jpg" alt="DESCON" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
+      <div class="logo-badge"><img src="logos/ghandara.jpg" alt="Ghandhara Industries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
+      <div class="logo-badge"><img src="logos/dha.jpg" alt="DHA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
+      <div class="logo-badge"><img src="logos/wwf.jpg" alt="WWF" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
+      <div class="logo-badge"><img src="logos/karachi%20university.jpg" alt="Karachi University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
     </div>
   </div>
   <div class="marquee-row">
     <div class="clients-block rev">
-      <div class="logo-badge"><img src="https://logo.clearbit.com/carltonhotel.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/marriott.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/pchotels.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/kwsb.gos.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/nooriabadpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/hubpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/bahria.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/fisheries.gob.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/carltonhotel.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/marriott.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/pchotels.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/kwsb.gos.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/nooriabadpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/hubpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/bahria.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
-      <div class="logo-badge"><img src="https://logo.clearbit.com/fisheries.gob.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
+      <div class="logo-badge"><img src="logos/carlton.jpg" alt="Carlton Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
+      <div class="logo-badge"><img src="logos/sherton.jpg" alt="Hotel Sheraton" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
+      <div class="logo-badge"><img src="logos/pearl%20continental.jpg" alt="Pearl Continental" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
+      <div class="logo-badge"><img src="logos/kwsb.jpg" alt="KWSB" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
+      <div class="logo-badge"><img src="logos/nooriabad.jpg" alt="Nooriabad Power Co." onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
+      <div class="logo-badge"><img src="logos/hubco.jpg" alt="Hub Power Plant" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
+      <div class="logo-badge"><img src="logos/bahria.jpg" alt="Bahria Foundation" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
+      <div class="logo-badge"><img src="logos/fisheries.jpg" alt="Baluchistan Fisheries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
+      <div class="logo-badge"><img src="logos/carlton.jpg" alt="Carlton Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
+      <div class="logo-badge"><img src="logos/sherton.jpg" alt="Hotel Sheraton" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
+      <div class="logo-badge"><img src="logos/pearl%20continental.jpg" alt="Pearl Continental" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
+      <div class="logo-badge"><img src="logos/kwsb.jpg" alt="KWSB" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
+      <div class="logo-badge"><img src="logos/nooriabad.jpg" alt="Nooriabad Power Co." onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
+      <div class="logo-badge"><img src="logos/hubco.jpg" alt="Hub Power Plant" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
+      <div class="logo-badge"><img src="logos/bahria.jpg" alt="Bahria Foundation" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
+      <div class="logo-badge"><img src="logos/fisheries.jpg" alt="Baluchistan Fisheries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
     </div>
   </div>
 
