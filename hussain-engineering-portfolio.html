@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hussain Engineering — GRP &amp; Composite Fabrication, Karachi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root{
+  --navy:#0a0e14;
+  --panel:#121a26;
+  --surface:#1c2838;
+  --surface-2:#24344a;
+  --amber:#d4a017;
+  --amber-bright:#f5b942;
+  --off-white:#e8e4dc;
+  --steel:#5a6b7d;
+  --steel-light:#8b9bae;
+  --line: rgba(232,228,220,0.08);
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy);
+  color:var(--off-white);
+  font-family:var(--body);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+::selection{background:var(--amber);color:var(--navy);}
+
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+
+.container{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 6vw;
+}
+
+@media(max-width:768px){
+  .container{padding:0 24px;}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+/* ============ NAV ============ */
+.navbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:24px 6vw;
+  mix-blend-mode:normal;
+  transition:background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+  border-bottom:1px solid transparent;
+}
+.navbar.scrolled{
+  background:rgba(10,14,20,0.85);
+  backdrop-filter:blur(12px);
+  padding:14px 6vw;
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.15rem;
+  letter-spacing:0.02em;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+.nav-logo .mark{color:var(--amber);}
+.nav-links{
+  display:flex;
+  gap:36px;
+  font-size:0.85rem;
+  font-family:var(--mono);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.nav-links a{
+  position:relative;
+  color:var(--steel-light);
+  transition:color 0.3s ease;
+  padding-bottom:4px;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:0;
+  width:0;height:1px;
+  background:var(--amber);
+  transition:width 0.35s ease;
+}
+.nav-links a:hover{color:var(--off-white);}
+.nav-links a:hover::after{width:100%;}
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  background:none;
+  border:none;
+  padding:8px;
+  z-index:1001;
+}
+.nav-toggle span{
+  display:block;
+  width:24px;height:2px;
+  background:var(--off-white);
+  transition:all 0.3s ease;
+}
+@media(max-width:860px){
+  .nav-links{
+    position:fixed;
+    top:0;right:0;
+    height:100vh;
+    width:min(320px,80vw);
+    background:var(--panel);
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    gap:28px;
+    padding:0 48px;
+    transform:translateX(100%);
+    transition:transform 0.5s cubic-bezier(.77,0,.18,1);
+    border-left:1px solid var(--line);
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-toggle{display:flex;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:680px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(35%) contrast(1.1) brightness(0.55);
+  transform:scale(1.1);
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(10,14,20,0.55) 0%, rgba(10,14,20,0.35) 40%, rgba(10,14,20,0.95) 100%),
+    linear-gradient(90deg, rgba(10,14,20,0.9) 0%, rgba(10,14,20,0.15) 55%);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:0 6vw;
+  max-width:1280px;
+  margin:0 auto;
+  width:100%;
+}
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--amber);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:28px;
+}
+.hero-eyebrow::before{
+  content:'';
+  display:inline-block;
+  width:40px;height:1px;
+  background:var(--amber);
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(3rem, 9vw, 7.5rem);
+  line-height:0.98;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+.hero h1 .line{
+  display:block;
+  overflow:hidden;
+}
+.hero h1 .line span{
+  display:inline-block;
+  transform:translateY(110%);
+}
+.hero h1 .accent{color:var(--amber);}
+.hero-sub{
+  margin-top:32px;
+  max-width:46ch;
+  font-size:clamp(1rem,1.4vw,1.25rem);
+  color:var(--steel-light);
+  font-weight:400;
+}
+.hero-meta{
+  margin-top:48px;
+  display:flex;
+  gap:48px;
+  flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:0.8rem;
+  color:var(--steel-light);
+}
+.hero-meta div{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.hero-meta .num{
+  font-family:var(--display);
+  font-size:1.6rem;
+  font-weight:600;
+  color:var(--off-white);
+}
+.hero-meta .num .amber-dot{color:var(--amber);}
+
+.scroll-indicator{
+  position:absolute;
+  bottom:40px;
+  left:6vw;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--steel-light);
+}
+.scroll-indicator .line-track{
+  width:1px;
+  height:48px;
+  background:var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.scroll-indicator .line-track::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:40%;
+  background:var(--amber);
+  animation:scrollDrip 2.2s ease-in-out infinite;
+}
+@keyframes scrollDrip{
+  0%{transform:translateY(-100%);}
+  60%{transform:translateY(160%);}
+  100%{transform:translateY(160%);}
+}
+
+/* ============ RESIN DIVIDER (signature) ============ */
+.resin-divider{
+  position:relative;
+  width:100%;
+  height:140px;
+  display:block;
+  margin-top:-2px;
+  z-index:3;
+}
+.resin-divider svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.resin-divider.flip{transform:scaleY(-1);}
+
+/* ============ SECTION HEADERS ============ */
+.section{
+  position:relative;
+  padding:120px 0;
+}
+.section-tight{padding:80px 0;}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:40px;
+  margin-bottom:72px;
+  flex-wrap:wrap;
+}
+.section-eyebrow{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-eyebrow::before{
+  content:'';
+  width:32px;height:1px;
+  background:var(--amber);
+  display:inline-block;
+}
+.section-title{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(2.2rem,5vw,4rem);
+  line-height:1.05;
+  letter-spacing:-0.01em;
+  text-transform:uppercase;
+  max-width:16ch;
+}
+.section-desc{
+  max-width:38ch;
+  color:var(--steel-light);
+  font-size:1.02rem;
+}
+
+/* ============ ABOUT ============ */
+.about{
+  background:var(--panel);
+  position:relative;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:80px;
+  align-items:start;
+}
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:56px;}
+}
+.about-text p{
+  color:var(--steel-light);
+  margin-bottom:22px;
+  font-size:1.05rem;
+}
+.about-text p strong{
+  color:var(--off-white);
+  font-weight:500;
+}
+.about-text .lead{
+  font-family:var(--display);
+  font-size:1.5rem;
+  font-weight:500;
+  color:var(--off-white);
+  line-height:1.4;
+  margin-bottom:32px;
+}
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.timeline-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.timeline-item .yr{
+  font-family:var(--mono);
+  color:var(--amber);
+  font-size:0.95rem;
+  padding-top:2px;
+}
+.timeline-item .desc{
+  font-size:0.96rem;
+  color:var(--steel-light);
+}
+.timeline-item .desc strong{color:var(--off-white);font-weight:500;}
+
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line);
+  margin-top:90px;
+  border:1px solid var(--line);
+}
+@media(max-width:700px){
+  .stats-row{grid-template-columns:1fr;}
+}
+.stat{
+  background:var(--panel);
+  padding:48px 40px;
+  text-align:left;
+}
+.stat .stat-num{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(2.8rem,6vw,4.2rem);
+  color:var(--off-white);
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+  line-height:1;
+}
+.stat .stat-num .suffix{
+  color:var(--amber);
+  font-size:0.5em;
+}
+.stat .stat-label{
+  margin-top:14px;
+  font-family:var(--mono);
+  font-size:0.8rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--steel-light);
+}
+
+/* ============ CAPABILITIES ============ */
+.capabilities{background:var(--navy);}
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+@media(max-width:860px){
+  .cap-grid{grid-template-columns:1fr;}
+  .cap-grid .cap-card{grid-column:span 1 !important;}
+}
+.cap-card{
+  background:var(--panel);
+  position:relative;
+  overflow:hidden;
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:40px;
+  transition:background 0.5s ease;
+}
+@media(max-width:600px){
+  .cap-card{min-height:340px;padding:28px;}
+}
+.cap-card .cap-img{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.cap-card .cap-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(60%) brightness(0.35) contrast(1.1);
+  transform:scale(1.08);
+  transition:transform 1.4s cubic-bezier(.16,1,.3,1), filter 0.6s ease;
+}
+.cap-card:hover .cap-img img{
+  transform:scale(1);
+  filter:grayscale(20%) brightness(0.45) contrast(1.15);
+}
+.cap-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg, rgba(10,14,20,0.05) 0%, rgba(10,14,20,0.92) 85%);
+}
+.cap-card-content{
+  position:relative;
+  z-index:2;
+}
+.cap-num{
+  font-family:var(--mono);
+  font-size:0.8rem;
+  color:var(--amber);
+  letter-spacing:0.2em;
+  display:block;
+  margin-bottom:14px;
+}
+.cap-card h3{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.6rem;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  letter-spacing:-0.01em;
+}
+@media(max-width:600px){
+  .cap-card h3{font-size:1.3rem;}
+}
+.cap-card p{
+  color:var(--steel-light);
+  font-size:0.95rem;
+  max-width:42ch;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
+}
+.cap-card:hover p{
+  max-height:140px;
+  opacity:1;
+  margin-top:10px;
+}
+@media(max-width:860px){
+  .cap-card p{
+    max-height:140px;
+    opacity:1;
+    margin-top:10px;
+  }
+}
+.cap-card .cap-tag{
+  position:absolute;
+  top:40px; right:40px;
+  z-index:2;
+  width:46px;height:46px;
+  border:1px solid rgba(232,228,220,0.25);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform 0.5s ease, border-color 0.4s ease, background 0.4s ease;
+}
+@media(max-width:600px){
+  .cap-card .cap-tag{
+    top:24px; right:24px;
+    width:38px;height:38px;
+  }
+  .cap-card .cap-tag svg{width:15px;height:15px;}
+}
+.cap-card:hover .cap-tag{
+  transform:rotate(45deg);
+  border-color:var(--amber);
+  background:var(--amber);
+}
+.cap-card .cap-tag svg{
+  width:18px;height:18px;
+  stroke:var(--off-white);
+  transition:stroke 0.4s ease;
+}
+.cap-card:hover .cap-tag svg{stroke:var(--navy);}
+
+/* ============ PROJECTS ============ */
+.projects{background:var(--panel);}
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+@media(max-width:980px){
+  .proj-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .proj-grid{grid-template-columns:1fr;}
+}
+.proj-card{
+  position:relative;
+  border-radius:2px;
+  overflow:hidden;
+  aspect-ratio:4/5;
+  cursor:pointer;
+  isolation:isolate;
+}
+.proj-card .layer{
+  position:absolute;
+  inset:0;
+  transition:transform 0.6s cubic-bezier(.16,1,.3,1), opacity 0.6s ease;
+}
+.proj-card .layer img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(55%) brightness(0.55) contrast(1.1);
+  transition:filter 0.6s ease, transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+.proj-card .layer-2{
+  background:linear-gradient(135deg, rgba(212,160,23,0.18), rgba(212,160,23,0));
+  opacity:0;
+  mix-blend-mode:screen;
+}
+.proj-card .layer-3{
+  background:var(--surface-2);
+  transform:translateY(0);
+  opacity:0.35;
+}
+.proj-card:hover .layer img{
+  filter:grayscale(15%) brightness(0.65) contrast(1.15);
+  transform:scale(1.06);
+}
+.proj-card:hover .layer-2{opacity:1;}
+.proj-card .proj-overlay{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:linear-gradient(180deg, rgba(10,14,20,0) 30%, rgba(10,14,20,0.95) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:28px;
+}
+.proj-card .proj-job{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.2em;
+  color:var(--amber);
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.proj-card .proj-job::before{
+  content:'';
+  width:22px;height:1px;
+  background:var(--amber);
+  display:inline-block;
+}
+.proj-card h3{
+  font-family:var(--display);
+  font-size:1.3rem;
+  font-weight:600;
+  text-transform:uppercase;
+  line-height:1.15;
+  margin-bottom:10px;
+  letter-spacing:-0.005em;
+}
+.proj-card p{
+  font-size:0.88rem;
+  color:var(--steel-light);
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  transition:max-height 0.45s ease, opacity 0.35s ease, margin-top 0.45s ease;
+}
+.proj-card:hover p{
+  max-height:120px;
+  opacity:1;
+  margin-top:6px;
+}
+.proj-card .proj-tags{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+.proj-card .proj-tags span{
+  font-family:var(--mono);
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border:1px solid rgba(232,228,220,0.18);
+  border-radius:100px;
+  color:var(--steel-light);
+}
+.proj-card.featured{grid-column:span 2;}
+@media(max-width:640px){
+  .proj-card.featured{grid-column:span 1;aspect-ratio:4/5;}
+}
+
+/* ============ CLIENTS ============ */
+.clients{background:var(--navy);overflow:hidden;}
+.marquee-track{
+  display:flex;
+  white-space:nowrap;
+  width:max-content;
+  animation:marquee 38s linear infinite;
+}
+.clients:hover .marquee-track{animation-play-state:paused;}
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.marquee-row{
+  display:flex;
+  gap:0;
+}
+.client-badge{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(1.4rem,3vw,2.6rem);
+  text-transform:uppercase;
+  color:transparent;
+  -webkit-text-stroke:1px var(--steel);
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  gap:40px;
+  letter-spacing:-0.01em;
+  transition:color 0.4s ease, -webkit-text-stroke 0.4s ease;
+}
+.client-badge:hover{
+  color:var(--amber);
+  -webkit-text-stroke:1px var(--amber);
+}
+.client-badge::after{
+  content:'/';
+  color:var(--steel);
+  -webkit-text-stroke:0;
+  font-weight:400;
+}
+
+/* Logo wall variant */
+.logo-badge{
+  display:flex;
+  align-items:center;
+  gap:48px;
+  padding:0 48px;
+  border-right:1px solid var(--line);
+}
+.logo-badge img{
+  height:34px;
+  width:auto;
+  max-width:170px;
+  object-fit:contain;
+  filter:grayscale(100%) brightness(0) invert(1) opacity(0.45);
+  transition:filter 0.4s ease, transform 0.4s ease;
+}
+.logo-badge:hover img{
+  filter:grayscale(0%) brightness(1) invert(0) opacity(1);
+  transform:scale(1.06);
+}
+.logo-badge span{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--steel);
+  white-space:nowrap;
+  transition:color 0.4s ease;
+}
+.logo-badge:hover span{color:var(--amber);}
+@media(max-width:600px){
+  .logo-badge{gap:24px;padding:0 28px;}
+  .logo-badge img{height:26px;max-width:120px;}
+}
+.marquee-row.reverse{animation:marqueeRev 44s linear infinite;}
+.clients-block + .clients-block{margin-top:6px;}
+.clients-block{
+  display:flex;
+  width:max-content;
+}
+.clients-block.rev{animation:marqueeRev 46s linear infinite;}
+.clients-block.fwd{animation:marquee 38s linear infinite;}
+.clients:hover .clients-block{animation-play-state:paused;}
+@keyframes marqueeRev{
+  from{transform:translateX(-50%);}
+  to{transform:translateX(0);}
+}
+.clients-industries{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:56px;
+}
+.clients-industries span{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:10px 18px;
+  border:1px solid var(--line);
+  border-radius:100px;
+  color:var(--steel-light);
+}
+
+/* ============ CONTACT ============ */
+.contact{
+  background:var(--panel);
+  position:relative;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:56px;}
+}
+.contact-info h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(2.4rem,6vw,4.5rem);
+  text-transform:uppercase;
+  line-height:1.05;
+  letter-spacing:-0.01em;
+  margin-bottom:28px;
+}
+.contact-info h2 .accent{color:var(--amber);}
+.contact-info p{
+  color:var(--steel-light);
+  max-width:42ch;
+  margin-bottom:40px;
+  font-size:1.02rem;
+}
+.contact-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.contact-list a, .contact-list .row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);
+  font-size:0.95rem;
+  color:var(--off-white);
+  transition:color 0.3s ease, padding-left 0.3s ease;
+}
+.contact-list a{cursor:pointer;}
+.contact-list a:hover{color:var(--amber);padding-left:8px;}
+.contact-list .label{
+  color:var(--steel-light);
+  font-size:0.78rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  font-family:var(--mono);
+}
+.contact-list .value{text-align:right;}
+.contact-list a svg{
+  width:16px;height:16px;
+  stroke:var(--steel-light);
+  transition:stroke 0.3s ease, transform 0.3s ease;
+}
+.contact-list a:hover svg{stroke:var(--amber);transform:translate(3px,-3px);}
+
+.contact-form{
+  background:var(--surface);
+  border:1px solid var(--line);
+  padding:48px;
+  border-radius:2px;
+}
+@media(max-width:600px){
+  .contact-form{padding:32px 24px;}
+}
+.contact-form h3{
+  font-family:var(--display);
+  font-size:1.1rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-bottom:8px;
+}
+.contact-form .form-sub{
+  color:var(--steel-light);
+  font-size:0.9rem;
+  margin-bottom:32px;
+}
+.form-group{
+  margin-bottom:24px;
+}
+.form-group label{
+  display:block;
+  font-family:var(--mono);
+  font-size:0.72rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--steel-light);
+  margin-bottom:10px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--off-white);
+  padding:14px 16px;
+  font-family:var(--body);
+  font-size:0.95rem;
+  border-radius:1px;
+  transition:border-color 0.3s ease, background 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:var(--amber);
+  background:var(--surface-2);
+}
+.form-group textarea{resize:vertical;min-height:110px;}
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+@media(max-width:480px){
+  .form-row{grid-template-columns:1fr;}
+}
+.btn-submit{
+  width:100%;
+  background:var(--amber);
+  color:var(--navy);
+  border:none;
+  padding:18px 28px;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  cursor:pointer;
+  border-radius:1px;
+  transition:background 0.3s ease, transform 0.2s ease, letter-spacing 0.3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.btn-submit:hover{
+  background:var(--amber-bright);
+  letter-spacing:0.14em;
+}
+.btn-submit:active{transform:scale(0.98);}
+.btn-submit svg{width:18px;height:18px;stroke:var(--navy);}
+
+.form-note{
+  margin-top:16px;
+  font-size:0.8rem;
+  color:var(--steel-light);
+  text-align:center;
+}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--navy);
+  border-top:1px solid var(--line);
+  padding:48px 0;
+}
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.footer-logo{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.1rem;
+  text-transform:uppercase;
+}
+.footer-logo .mark{color:var(--amber);}
+.footer-meta{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--steel-light);
+  letter-spacing:0.05em;
+  text-align:right;
+}
+.footer-meta a{color:var(--steel-light);transition:color 0.3s ease;}
+.footer-meta a:hover{color:var(--amber);}
+
+/* ============ REVEAL ANIMS ============ */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+}
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo"><span class="mark">H</span>USSAIN ENGINEERING</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">Legacy</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#projects">Projects</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/grp-shipyard-hero/1920/1080" alt="Fiberglass boat hull under construction at a Karachi shipyard">
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Karachi · Est. industrial composites &amp; civil works</div>
+    <h1>
+      <span class="line"><span>Built in</span></span>
+      <span class="line"><span>Resin.</span></span>
+      <span class="line"><span class="accent">Proven</span></span>
+      <span class="line"><span>at Sea.</span></span>
+    </h1>
+    <p class="hero-sub">For three decades Hussain Engineering has laminated, molded and welded the vessels, tanks and structures that Pakistan's marine, industrial and civil sectors run on — from the country's first GRP trawler to unsinkable barges nominated for design excellence in Atlanta.</p>
+    <div class="hero-meta">
+      <div><span class="num">30<span class="amber-dot">+</span></span>Years in fabrication</div>
+      <div><span class="num">49<span class="amber-dot">+</span></span>Projects on record</div>
+      <div><span class="num">12<span class="amber-dot">+</span></span>Industries served</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="line-track"></div>
+  </div>
+</header>
+
+<!-- Resin divider -->
+<div class="resin-divider">
+  <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path id="resinPath1" fill="#121a26" d="M0,60 C240,120 480,0 720,40 C960,80 1200,10 1440,70 L1440,140 L0,140 Z"></path>
+  </svg>
+</div>
+
+<!-- ============ ABOUT / LEGACY ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">01 — Legacy</div>
+        <h2 class="section-title">Three Decades of First-of-Their-Kind Fabrication</h2>
+      </div>
+      <p class="section-desc">Pioneering composite engineering for Pakistan's marine, energy, fisheries and civil sectors since the late 1980s.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="lead">Hussain Engineering didn't enter the GRP industry — it helped build it in Pakistan, one prototype at a time.</p>
+        <p>What began as a small Karachi fabrication outfit became the country's reference point for fiberglass-reinforced plastic (GRP) and composite work: the <strong>first GRP trawler ever built in Pakistan</strong>, the <strong>first GRP fishing trawler design</strong> later exported to Madagascar, and an <strong>award-nominated self-propelled unsinkable barge</strong> recognised for Design Excellence in Atlanta, Georgia.</p>
+        <p>Today the same workshop floor that shaped those firsts runs production for refineries, power plants, hotels, fisheries authorities and the armed forces — alongside a steady civil works practice covering everything from bungalows to school buildings. Three decades in, the constant is the same: design it properly, build it to last, and stand behind it in the field.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="yr">№ 01</div>
+          <div class="desc"><strong>40,000-litre underground GRP fuel tanks</strong> — built to international standard for the Ormara naval base, in continuous use for over 30 years.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="yr">№ 02</div>
+          <div class="desc"><strong>Designed &amp; built the first GRP trawler of Pakistan</strong> — the foundation project that established the workshop's composite marine practice.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="yr">№ 03</div>
+          <div class="desc"><strong>Self-propelled unsinkable GRP barge</strong> — assisted in design and manufacture; nominated for the Award of Design Excellence in Atlanta, Georgia, USA.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="yr">№ 04</div>
+          <div class="desc"><strong>First 40ft GRP fishing trawler</strong> designed in-house from an original mould — one unit exported to Madagascar.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="yr">№ 05</div>
+          <div class="desc"><strong>Unsinkable steel boats for Tarbela Dam</strong> — the first of their kind built for the reservoir's operations fleet.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">30<span class="suffix">+ yrs</span></div>
+        <div class="stat-label">Continuous GRP &amp; composite fabrication</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">49<span class="suffix">+ projects</span></div>
+        <div class="stat-label">Logged projects across marine, industrial &amp; civil</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12<span class="suffix">+ sectors</span></div>
+        <div class="stat-label">Marine, energy, fisheries, hospitality, defence, auto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="resin-divider flip">
+  <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#0a0e14" d="M0,60 C240,120 480,0 720,40 C960,80 1200,10 1440,70 L1440,140 L0,140 Z"></path>
+  </svg>
+</div>
+
+<!-- ============ CAPABILITIES ============ -->
+<section class="capabilities section" id="capabilities">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">02 — Capabilities</div>
+        <h2 class="section-title">Five Disciplines, One Workshop Floor</h2>
+      </div>
+      <p class="section-desc">From hull lamination to poured foundations — design, mould, fabricate, finish and install, in-house.</p>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-img"><img src="https://picsum.photos/seed/fiberglass-boat-hull/900/700" alt="GRP boat hull on a fabrication cradle"></div>
+        <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        <div class="cap-card-content">
+          <span class="cap-num">CAP / 01</span>
+          <h3>Marine &amp; Boat Work</h3>
+          <p>GRP trawlers, patrol and ambulance boats, pleasure craft, double-hull vessels and fish-hold linings — built and repaired to EU hygienic standards for fisheries authorities, cooperatives and private owners.</p>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-img"><img src="https://picsum.photos/seed/industrial-tank-grp/900/700" alt="Large GRP industrial storage tank installation"></div>
+        <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        <div class="cap-card-content">
+          <span class="cap-num">CAP / 02</span>
+          <h3>Industrial Tanks &amp; Linings</h3>
+          <p>Underground fuel tanks, chemical-resistant resin linings, scrubbers and cooling tower sheeting for refineries and power plants — engineered for decades of unattended service.</p>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-img"><img src="https://picsum.photos/seed/resin-manufacturing-parts/900/700" alt="Composite automotive panel being moulded"></div>
+        <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        <div class="cap-card-content">
+          <span class="cap-num">CAP / 03</span>
+          <h3>Composite Auto Parts</h3>
+          <p>Registered composite-component manufacturer for Ghandhara Industries and GM — spoilers, air ducts, shrouds, mudguards, bonnets and trim covers for trucks, buses and tractors.</p>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-img"><img src="https://picsum.photos/seed/construction-site-karachi/900/700" alt="Civil works construction site"></div>
+        <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        <div class="cap-card-content">
+          <span class="cap-num">CAP / 04</span>
+          <h3>Civil &amp; Construction Works</h3>
+          <p>Registered contractor for bungalows, schools, commercial plazas and refinery civil structures — from foundations and pumping rooms to full building renovation.</p>
+        </div>
+      </div>
+
+      <div class="cap-card" style="grid-column: span 2;">
+        <div class="cap-img"><img src="https://picsum.photos/seed/shipyard-fabrication-workshop/1800/700" alt="Custom GRP fabrication workshop floor"></div>
+        <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        <div class="cap-card-content">
+          <span class="cap-num">CAP / 05</span>
+          <h3>Custom Fabrication &amp; One-Off Builds</h3>
+          <p>Domes, louvers, canopies, merry-go-rounds, aquaponics beds, mesh and corrugated GRP sheet — if it can be laminated, moulded or welded, it has likely already passed through this workshop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="resin-divider">
+  <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#121a26" d="M0,40 C300,100 600,0 900,50 C1100,85 1300,30 1440,60 L1440,140 L0,140 Z"></path>
+  </svg>
+</div>
+
+<!-- ============ FEATURED PROJECTS ============ -->
+<section class="projects section" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">03 — Selected Work</div>
+        <h2 class="section-title">Projects That Defined the Workshop</h2>
+      </div>
+      <p class="section-desc">A sample of 49+ logged projects — the ones that pushed the workshop into new territory, or simply had to work the first time, every time.</p>
+    </div>
+
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/ormara-naval-fuel-tank/900/1100" alt="Underground fuel storage tank installation"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 01</div>
+          <h3>40,000L Underground GRP Fuel Tank, Ormara</h3>
+          <p>Designed and built to international standards for the Ormara naval base — in continuous operation for over 30 years.</p>
+          <div class="proj-tags"><span>Defence</span><span>Long-Service</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/prawn-breeding-station/900/1100" alt="Prawn breeding research station tanks"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 02</div>
+          <h3>Pak-US Prawn Breeding Station</h3>
+          <p>Complete turnkey design and manufacture of a prawn breeding station for the Pak-US Shrimp Culture Project — the only design of its kind to remain operational at minimal cost.</p>
+          <div class="proj-tags"><span>Turnkey</span><span>Fisheries</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card featured">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/unsinkable-barge-grp/1000/1250" alt="GRP self-propelled unsinkable barge"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 03</div>
+          <h3>Self-Propelled Unsinkable GRP Barge</h3>
+          <p>Assisted in the design and manufacture of a first-of-its-kind self-propelled, unsinkable composite barge — nominated for the Award of Design Excellence in Atlanta, Georgia, USA.</p>
+          <div class="proj-tags"><span>Marine</span><span>Award-Nominated</span><span>Composite Hull</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/sheraton-pool-dome/900/1100" alt="Domed pool covering structure"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 04</div>
+          <h3>Sheraton Kids' Pool GRP Domes</h3>
+          <p>Supply and installation of 10ft-diameter GRP domes covering the children's swimming pool at Hotel Sheraton — still in service today.</p>
+          <div class="proj-tags"><span>Hospitality</span><span>Custom Moulding</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/hub-power-plant-louvers/900/1100" alt="Industrial window louvers at a power plant"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 05</div>
+          <h3>Window Louvers, Hub Power Plant</h3>
+          <p>Manufacture and installation of GRP window louvres across the Hub Power Plant facility, built to withstand sustained industrial-environment exposure.</p>
+          <div class="proj-tags"><span>Power Generation</span><span>Industrial</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/pearl-continental-cabin-cruiser/900/1100" alt="Fiberglass cabin cruiser undergoing repair"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 06</div>
+          <h3>Pearl Continental Cabin Cruiser Repair</h3>
+          <p>Full fibreglass repair and restoration of the Pearl Continental Hotel's cabin cruiser, returning the vessel to service condition.</p>
+          <div class="proj-tags"><span>Hospitality</span><span>Restoration</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/madagascar-export-trawler/900/1100" alt="40ft GRP fishing trawler hull"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 07</div>
+          <h3>40ft GRP Trawler — Exported to Madagascar</h3>
+          <p>In-house architectural design of the first 40ft GRP fishing trawler built from an original mould, with one completed unit exported to Madagascar.</p>
+          <div class="proj-tags"><span>Export</span><span>Original Design</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/baluchistan-patrol-boats/900/1100" alt="Patrol boat for Baluchistan Fisheries"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 08</div>
+          <h3>Patrol &amp; Ambulance Boats, Baluchistan Fisheries</h3>
+          <p>Design and build consultancy for six patrol boats and three ambulance boats commissioned for Baluchistan Fisheries — covering coastal monitoring and emergency response.</p>
+          <div class="proj-tags"><span>Government</span><span>Marine Fleet</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card featured">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/tarbela-dam-steel-boats/1000/1250" alt="Steel patrol boats on a dam reservoir"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 09</div>
+          <h3>First Unsinkable Steel Boats, Tarbela Dam</h3>
+          <p>Designed and built the first unsinkable steel boats placed into service on the Tarbela Dam reservoir — a benchmark project for the operations fleet.</p>
+          <div class="proj-tags"><span>Dam Infrastructure</span><span>Steel Fabrication</span><span>First-of-Kind</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="layer layer-3"></div>
+        <div class="layer layer-1"><img src="https://picsum.photos/seed/karachi-university-research-tank/900/1100" alt="Research station tanks at a university"></div>
+        <div class="layer layer-2"></div>
+        <div class="proj-overlay">
+          <div class="proj-job">Project № 10</div>
+          <h3>Prawn Breeding Research Station, Karachi University</h3>
+          <p>Built a dedicated prawn breeding research station for Karachi University, supporting academic aquaculture research with purpose-built GRP tankage.</p>
+          <div class="proj-tags"><span>Academic</span><span>Aquaculture</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="resin-divider flip">
+  <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#0a0e14" d="M0,40 C300,100 600,0 900,50 C1100,85 1300,30 1440,60 L1440,140 L0,140 Z"></path>
+  </svg>
+</div>
+
+<!-- ============ CLIENTS & INDUSTRIES ============ -->
+<section class="clients section-tight" id="clients">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">04 — Trusted By</div>
+        <h2 class="section-title">Clients &amp; Industries Served</h2>
+      </div>
+      <p class="section-desc">Refineries, power plants, hotels, government bodies and conglomerates — repeat clients across three decades.</p>
+    </div>
+  </div>
+
+  <div class="marquee-row">
+    <div class="clients-block fwd">
+      <div class="logo-badge"><img src="https://logo.clearbit.com/nrlpak.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/prl.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/cnergyico.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/descon.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/gil.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/dha.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/wwfpak.org" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/uok.edu.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/nrlpak.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/prl.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/cnergyico.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/descon.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/gil.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/dha.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/wwfpak.org" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/uok.edu.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
+    </div>
+  </div>
+  <div class="marquee-row">
+    <div class="clients-block rev">
+      <div class="logo-badge"><img src="https://logo.clearbit.com/carltonhotel.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/marriott.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/pchotels.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/kwsb.gos.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/nooriabadpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/hubpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/bahria.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/fisheries.gob.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/carltonhotel.com.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/marriott.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/pchotels.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pearl Continental</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/kwsb.gos.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/nooriabadpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/hubpower.com" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/bahria.org.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
+      <div class="logo-badge"><img src="https://logo.clearbit.com/fisheries.gob.pk" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="clients-industries">
+      <span>Marine &amp; Fisheries</span>
+      <span>Oil &amp; Gas Refining</span>
+      <span>Power Generation</span>
+      <span>Hospitality</span>
+      <span>Defence &amp; Government</span>
+      <span>Automotive</span>
+      <span>Real Estate &amp; Civil</span>
+      <span>Water Supply &amp; Utilities</span>
+      <span>Education</span>
+      <span>Amusement &amp; Leisure</span>
+      <span>Conservation (WWF)</span>
+      <span>Aquaculture</span>
+    </div>
+  </div>
+</section>
+
+<div class="resin-divider">
+  <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#121a26" d="M0,40 C300,100 600,0 900,50 C1100,85 1300,30 1440,60 L1440,140 L0,140 Z"></path>
+  </svg>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Bring Us<br>Your <span class="accent">Hardest</span><br>Build.</h2>
+        <p>Whether it's a one-off prototype, a production run of composite components, or a civil works contract — describe the project and we'll respond with what it takes to get it built right.</p>
+
+        <div class="contact-list">
+          <div class="row">
+            <span class="label">Workshop</span>
+            <span class="value">Karachi, Pakistan</span>
+          </div>
+          <a href="tel:+922100000000">
+            <span class="label">Phone</span>
+            <span class="value">+92 21 0000 0000</span>
+          </a>
+          <a href="mailto:info@hussainengineering.example">
+            <span class="label">Email</span>
+            <span class="value">info@hussainengineering.example</span>
+          </a>
+          <a href="https://wa.me/923000000000" target="_blank" rel="noopener">
+            <span class="label">WhatsApp</span>
+            <span class="value">+92 300 000 0000 ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send a Project Inquiry</h3>
+        <p class="form-sub">Fill this out and your default email client will open with the message pre-filled — review and hit send from there.</p>
+
+        <form id="inquiryForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="fcompany">Company</label>
+              <input type="text" id="fcompany" name="fcompany" placeholder="Organisation (optional)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" name="femail" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="fcategory">Type of Work</label>
+              <select id="fcategory" name="fcategory">
+                <option>Marine &amp; Boat Work</option>
+                <option>Industrial Tanks &amp; Linings</option>
+                <option>Composite Auto Parts</option>
+                <option>Civil &amp; Construction</option>
+                <option>Custom Fabrication</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Project Details</label>
+            <textarea id="fmessage" name="fmessage" placeholder="Tell us about the project — scope, size, timeline..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Send Inquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <p class="form-note">Opens your email app with a pre-filled message — nothing is sent automatically.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo"><span class="mark">H</span>USSAIN ENGINEERING</div>
+      <div class="footer-meta">
+        GRP &amp; Composite Fabrication · Civil Works · Karachi, Pakistan<br>
+        © <span id="year"></span> Hussain Engineering. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---- Nav scroll state ---- */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive:true });
+
+/* ---- Mobile nav toggle ---- */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navToggle.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+/* ---- GSAP setup ---- */
+gsap.registerPlugin(ScrollTrigger);
+
+/* Hero title line reveal */
+gsap.to('.hero h1 .line span', {
+  y: 0,
+  duration: 1,
+  ease: 'power4.out',
+  stagger: 0.12,
+  delay: 0.2
+});
+gsap.from('.hero-eyebrow, .hero-sub, .hero-meta', {
+  opacity: 0,
+  y: 20,
+  duration: 1,
+  ease: 'power3.out',
+  stagger: 0.15,
+  delay: 0.6
+});
+
+/* Hero parallax */
+gsap.to('.hero-bg img', {
+  yPercent: 18,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true
+  }
+});
+
+/* Resin divider morph on scroll */
+const resinPaths = [
+  "M0,60 C240,120 480,0 720,40 C960,80 1200,10 1440,70 L1440,140 L0,140 Z",
+  "M0,30 C240,90 480,140 720,80 C960,30 1200,110 1440,40 L1440,140 L0,140 Z",
+  "M0,80 C240,20 480,90 720,30 C960,100 1200,40 1440,90 L1440,140 L0,140 Z"
+];
+document.querySelectorAll('.resin-divider svg path').forEach((path, i) => {
+  gsap.to(path, {
+    attr: { d: resinPaths[(i+1) % resinPaths.length] },
+    scrollTrigger: {
+      trigger: path.closest('.resin-divider'),
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    }
+  });
+});
+
+/* Section reveals */
+gsap.utils.toArray('.section-head, .timeline-item, .stats-row, .cap-card, .proj-card, .contact-info, .contact-form').forEach(el => {
+  el.classList.add('reveal');
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 85%',
+    onEnter: () => el.classList.add('in'),
+    once: true
+  });
+});
+
+/* Animated counters for stats row */
+document.querySelectorAll('.stat-num').forEach(el => {
+  const fullText = el.textContent.trim();
+  const match = fullText.match(/(\d+)(.*)/);
+  if (!match) return;
+  const target = parseInt(match[1]);
+  const suffixText = match[2].trim();
+  el.innerHTML = '<span class="count">0</span><span class="suffix">' + suffixText + '</span>';
+  const counterEl = el.querySelector('.count');
+  gsap.to(counterEl, {
+    textContent: target,
+    duration: 2,
+    ease: 'power2.out',
+    snap: { textContent: 1 },
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%',
+      once: true
+    }
+  });
+});
+
+document.querySelectorAll('.hero-meta .num').forEach(el => {
+  const fullText = el.textContent.trim();
+  const match = fullText.match(/(\d+)(.*)/);
+  if (!match) return;
+  const target = parseInt(match[1]);
+  const suffixText = match[2].trim();
+  el.innerHTML = '<span class="count">0</span><span class="amber-dot">' + suffixText + '</span>';
+  const counterEl = el.querySelector('.count');
+  gsap.to(counterEl, {
+    textContent: target,
+    duration: 1.8,
+    ease: 'power2.out',
+    snap: { textContent: 1 },
+    delay: 0.8
+  });
+});
+
+/* ---- Mailto form ---- */
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('fname').value;
+  const company = document.getElementById('fcompany').value;
+  const email = document.getElementById('femail').value;
+  const category = document.getElementById('fcategory').value;
+  const message = document.getElementById('fmessage').value;
+
+  const subject = encodeURIComponent('Project Inquiry from Website');
+  const body = encodeURIComponent(
+`New project inquiry submitted via the Hussain Engineering website.
+
+Name: ${name}
+Company: ${company || 'N/A'}
+Email: ${email}
+Type of Work: ${category}
+
+Project Details:
+${message}`
+  );
+
+  window.location.href = `mailto:info@hussainengineering.example?subject=${subject}&body=${body}`;
+});
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
