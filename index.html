@@ -948,6 +948,7 @@ img{display:block;max-width:100%;}
   color:var(--steel-light);
   text-align:center;
 }
+.form-note a{color:var(--accent,inherit);text-decoration:underline;}
 
 /* ============ FOOTER ============ */
 footer{
@@ -1458,6 +1459,7 @@ footer{
             Send Inquiry
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
+          <p class="form-note" id="mailFallback" hidden></p>
         </form>
       </div>
     </div>
@@ -1606,8 +1608,8 @@ document.getElementById('inquiryForm').addEventListener('submit', function(e) {
   const category = document.getElementById('fcategory').value;
   const message = document.getElementById('fmessage').value;
 
-  const subject = encodeURIComponent('Project Inquiry from Website');
-  const body = encodeURIComponent(
+  const subjectText = 'Project Inquiry from Website';
+  const bodyText =
 `New project inquiry submitted via the Hussain Engineering website.
 
 Name: ${name}
@@ -1616,10 +1618,23 @@ Email: ${email}
 Type of Work: ${category}
 
 Project Details:
-${message}`
-  );
+${message}`;
+  const to = 'hussainengineering.sales@gmail.com';
+  const subject = encodeURIComponent(subjectText);
+  const body = encodeURIComponent(bodyText);
 
-  window.location.href = `mailto:hussainengineering.sales@gmail.com?subject=${subject}&body=${body}`;
+  // Open the default email client with the pre-filled message
+  const a = document.createElement('a');
+  a.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  // Fallback if no default mail app is configured on this device
+  const note = document.getElementById('mailFallback');
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+  note.innerHTML = 'Email app didn’t open? <a href="' + gmail + '" target="_blank" rel="noopener">Compose in Gmail</a> or write to <a href="mailto:' + to + '">' + to + '</a>.';
+  note.hidden = false;
 });
 </script>
 
