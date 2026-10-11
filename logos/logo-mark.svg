@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 8 180 160" role="img" aria-label="Hussain Engineering">
+  <defs>
+    <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4c7cb"/><stop offset="1" stop-color="#8b8f95"/>
+    </linearGradient>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37b6e6"/><stop offset="1" stop-color="#1b6fb5"/>
+    </linearGradient>
+    <clipPath id="top"><rect x="0" y="0" width="300" height="88"/></clipPath>
+    <clipPath id="bottom"><rect x="0" y="88" width="300" height="200"/></clipPath>
+  </defs>
+  <path d="M136.7,32.6 L140.4,16.6 L159.6,16.6 L163.3,32.6 L179.8,39.4 L193.7,30.8 L207.2,44.3 L198.6,58.2 L205.4,74.7 L221.4,78.4 L221.4,97.6 L205.4,101.3 L198.6,117.8 L207.2,131.7 L193.7,145.2 L179.8,136.6 L163.3,143.4 L159.6,159.4 L140.4,159.4 L136.7,143.4 L120.2,136.6 L106.3,145.2 L92.8,131.7 L101.4,117.8 L94.6,101.3 L78.6,97.6 L78.6,78.4 L94.6,74.7 L101.4,58.2 L92.8,44.3 L106.3,30.8 L120.2,39.4 Z M120,88 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 Z" fill-rule="evenodd" fill="url(#gGray)" clip-path="url(#top)"/>
+  <path d="M136.7,32.6 L140.4,16.6 L159.6,16.6 L163.3,32.6 L179.8,39.4 L193.7,30.8 L207.2,44.3 L198.6,58.2 L205.4,74.7 L221.4,78.4 L221.4,97.6 L205.4,101.3 L198.6,117.8 L207.2,131.7 L193.7,145.2 L179.8,136.6 L163.3,143.4 L159.6,159.4 L140.4,159.4 L136.7,143.4 L120.2,136.6 L106.3,145.2 L92.8,131.7 L101.4,117.8 L94.6,101.3 L78.6,97.6 L78.6,78.4 L94.6,74.7 L101.4,58.2 L92.8,44.3 L106.3,30.8 L120.2,39.4 Z M120,88 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 Z" fill-rule="evenodd" fill="url(#gBlue)" clip-path="url(#bottom)"/>
+  <!-- inner open ring -->
+  <path d="M167,74 A22,22 0 1,0 170,98" fill="none" stroke="url(#gGray)" stroke-width="9" stroke-linecap="butt"/>
+  <path d="M170,98 A22,22 0 0,1 156,109" fill="none" stroke="url(#gBlue)" stroke-width="9" stroke-linecap="butt"/>
+  <path d="M152,91 H184 L184,101 H152 Z" fill="url(#gBlue)"/>
+</svg>
