@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="60 8 180 160" role="img" aria-label="Hussain Engineering">
   <defs>
     <linearGradient id="gGray" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#c4c7cb"/><stop offset="1" stop-color="#8b8f95"/>
+      <stop offset="0" stop-color="#a9b8ca"/><stop offset="1" stop-color="#5a6b7d"/>
     </linearGradient>
     <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#37b6e6"/><stop offset="1" stop-color="#1b6fb5"/>
+      <stop offset="0" stop-color="#f5b942"/><stop offset="1" stop-color="#d4a017"/>
     </linearGradient>
     <clipPath id="top"><rect x="0" y="0" width="300" height="88"/></clipPath>
     <clipPath id="bottom"><rect x="0" y="88" width="300" height="200"/></clipPath>
