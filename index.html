@@ -3,13 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="logos/logo-mark.svg">
-<title>Hussain Engineering — GRP &amp; Composite Fabrication, Karachi</title>
+<script>document.documentElement.classList.add('js')</script>
+<title>Hussain Engineering | GRP, FRP &amp; Fiberglass Fabrication Karachi</title>
+<meta name="description" content="Hussain Engineering: 30+ years of GRP/FRP and fiberglass fabrication in Karachi. Industrial tanks and linings, composite auto parts (spoilers, body parts), custom builds.">
+<link rel="canonical" href="https://hussain-engineering.vercel.app/">
+<meta name="theme-color" content="#0a0e14">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hussain Engineering">
+<meta property="og:title" content="Hussain Engineering | GRP &amp; Fiberglass Fabrication, Karachi">
+<meta property="og:description" content="Hussain Engineering: 30+ years of GRP/FRP and fiberglass fabrication in Karachi. Industrial tanks and linings, composite auto parts (spoilers, body parts), custom builds.">
+<meta property="og:url" content="https://hussain-engineering.vercel.app/">
+<meta property="og:image" content="https://hussain-engineering.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hussain Engineering: GRP, FRP and fiberglass fabrication in Karachi">
+<meta property="og:locale" content="en_PK">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="/logos/logo-mark.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<!-- TODO(owner): replace the placeholder hero below with a real, self-hosted photo of the work (see SEO brief B1) -->
+<link rel="preconnect" href="https://picsum.photos">
+<link rel="preload" as="image" href="https://picsum.photos/seed/grp-shipyard-hero/1920/1080" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://hussain-engineering.vercel.app/#business",
+  "name": "Hussain Engineering",
+  "url": "https://hussain-engineering.vercel.app/",
+  "telephone": "+92 336 8045770",
+  "email": "hussainengineering.sales@gmail.com",
+  "logo": "https://hussain-engineering.vercel.app/icon-512.png",
+  "image": "https://hussain-engineering.vercel.app/og-image.jpg",
+  "description": "GRP/FRP and fiberglass fabrication in Karachi: industrial tanks and linings, composite auto parts and custom builds.",
+  "areaServed": { "@type": "City", "name": "Karachi" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Survey 32, Gali No. 2, near Quba Masjid, Sherpao Colony, Landhi",
+    "addressLocality": "Karachi",
+    "addressCountry": "PK"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Products and services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Industrial Tanks & Linings" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Composite Auto Parts" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Fabrication & One-Off Builds" } }
+    ]
+  }
+}
+</script>
 
 <style>
 :root{
@@ -53,9 +103,25 @@ img{display:block;max-width:100%;}
   .container{padding:0 24px;}
 }
 
+.skip-link{
+  position:fixed;left:16px;top:-60px;z-index:2000;
+  background:var(--amber);color:var(--navy);
+  padding:10px 16px;font-family:var(--mono);font-size:0.8rem;
+  letter-spacing:0.06em;text-transform:uppercase;
+  transition:top 0.2s ease;
+}
+.skip-link:focus{top:16px;}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition-duration:0.01ms !important;}
+  .clients-block,.scroll-indicator .line-track::after{animation:none !important;}
+  .scroll-indicator .line-track::after{display:none;}
+  .reveal{opacity:1 !important;transform:none !important;}
+  .hero h1 .line span{transform:none !important;}
+  .clients-block{width:auto;flex-wrap:wrap;justify-content:center;row-gap:16px;}
+  .clients-block [aria-hidden="true"]{display:none;}
 }
 
 /* ============ NAV ============ */
@@ -78,6 +144,7 @@ img{display:block;max-width:100%;}
   border-bottom:1px solid var(--line);
 }
 .nav-logo{
+  white-space:nowrap;
   font-family:var(--display);
   font-weight:700;
   font-size:1.15rem;
@@ -86,18 +153,18 @@ img{display:block;max-width:100%;}
   align-items:baseline;
   gap:8px;
 }
-.nav-logo .mark{color:var(--amber);}
 .logo-mark{height:38px;width:auto;display:block;}
 .nav-logo{align-items:center;}
 .nav-links{
   display:flex;
-  gap:36px;
+  gap:clamp(18px,2.2vw,36px);
   font-size:0.85rem;
   font-family:var(--mono);
   letter-spacing:0.06em;
   text-transform:uppercase;
 }
 .nav-links a{
+  white-space:nowrap;
   position:relative;
   color:var(--steel-light);
   transition:color 0.3s ease;
@@ -129,11 +196,12 @@ img{display:block;max-width:100%;}
   background:var(--off-white);
   transition:all 0.3s ease;
 }
-@media(max-width:860px){
+@media(max-width:1180px){
   .nav-links{
     position:fixed;
     top:0;right:0;
     height:100vh;
+    height:100dvh;
     width:min(320px,80vw);
     background:var(--panel);
     flex-direction:column;
@@ -142,10 +210,11 @@ img{display:block;max-width:100%;}
     gap:28px;
     padding:0 48px;
     transform:translateX(100%);
-    transition:transform 0.5s cubic-bezier(.77,0,.18,1);
+    visibility:hidden;
+    transition:transform 0.5s cubic-bezier(.77,0,.18,1), visibility 0s 0.5s;
     border-left:1px solid var(--line);
   }
-  .nav-links.open{transform:translateX(0);}
+  .nav-links.open{transform:translateX(0);visibility:visible;transition:transform 0.5s cubic-bezier(.77,0,.18,1), visibility 0s;}
   .nav-toggle{display:flex;}
   .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
   .nav-toggle.open span:nth-child(2){opacity:0;}
@@ -156,6 +225,7 @@ img{display:block;max-width:100%;}
 .hero{
   position:relative;
   height:100vh;
+  height:100svh;
   min-height:680px;
   display:flex;
   flex-direction:column;
@@ -221,8 +291,9 @@ img{display:block;max-width:100%;}
 }
 .hero h1 .line span{
   display:inline-block;
-  transform:translateY(110%);
 }
+.js .hero h1 .line span{transform:translateY(110%);}
+.js .hero-eyebrow,.js .hero-sub,.js .hero-meta{opacity:0;}
 .hero h1 .accent{color:var(--amber);}
 .hero-sub{
   margin-top:32px;
@@ -522,23 +593,20 @@ img{display:block;max-width:100%;}
   color:var(--steel-light);
   font-size:0.95rem;
   max-width:42ch;
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.5s ease;
-}
-.cap-card:hover p{
-  max-height:140px;
-  opacity:1;
   margin-top:10px;
 }
-@media(max-width:860px){
-  .cap-card p{
-    max-height:140px;
-    opacity:1;
-    margin-top:10px;
-  }
+.cap-link{
+  display:inline-block;
+  margin-top:14px;
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--amber);
+  border-bottom:1px solid transparent;
+  transition:border-color 0.3s ease;
 }
+.cap-link:hover,.cap-link:focus-visible{border-color:var(--amber);}
 .cap-card .cap-tag{
   position:absolute;
   top:40px; right:40px;
@@ -587,9 +655,16 @@ img{display:block;max-width:100%;}
   position:relative;
   border-radius:2px;
   overflow:hidden;
-  aspect-ratio:4/5;
   cursor:pointer;
   isolation:isolate;
+  display:grid;
+  grid-template-columns:100%;
+}
+/* 4:5 minimum shape that still grows if the text needs more room */
+.proj-card::before{
+  content:'';
+  grid-area:1 / 1;
+  padding-top:125%;
 }
 .proj-card .layer{
   position:absolute;
@@ -617,8 +692,8 @@ img{display:block;max-width:100%;}
 }
 .proj-card:hover .layer-2{opacity:1;}
 .proj-card .proj-overlay{
-  position:absolute;
-  inset:0;
+  position:relative;
+  grid-area:1 / 1;
   z-index:3;
   background:linear-gradient(180deg, rgba(10,14,20,0) 30%, rgba(10,14,20,0.95) 100%);
   display:flex;
@@ -654,14 +729,6 @@ img{display:block;max-width:100%;}
 .proj-card p{
   font-size:0.88rem;
   color:var(--steel-light);
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  transition:max-height 0.45s ease, opacity 0.35s ease, margin-top 0.45s ease;
-}
-.proj-card:hover p{
-  max-height:120px;
-  opacity:1;
   margin-top:6px;
 }
 .proj-card .proj-tags{
@@ -682,18 +749,11 @@ img{display:block;max-width:100%;}
 }
 .proj-card.featured{grid-column:span 2;}
 @media(max-width:640px){
-  .proj-card.featured{grid-column:span 1;aspect-ratio:4/5;}
+  .proj-card.featured{grid-column:span 1;}
 }
 
 /* ============ CLIENTS ============ */
 .clients{background:var(--navy);overflow:hidden;}
-.marquee-track{
-  display:flex;
-  white-space:nowrap;
-  width:max-content;
-  animation:marquee 38s linear infinite;
-}
-.clients:hover .marquee-track{animation-play-state:paused;}
 @keyframes marquee{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
@@ -702,31 +762,6 @@ img{display:block;max-width:100%;}
   display:flex;
   gap:0;
 }
-.client-badge{
-  font-family:var(--display);
-  font-weight:600;
-  font-size:clamp(1.4rem,3vw,2.6rem);
-  text-transform:uppercase;
-  color:transparent;
-  -webkit-text-stroke:1px var(--steel);
-  padding:0 40px;
-  display:flex;
-  align-items:center;
-  gap:40px;
-  letter-spacing:-0.01em;
-  transition:color 0.4s ease, -webkit-text-stroke 0.4s ease;
-}
-.client-badge:hover{
-  color:var(--amber);
-  -webkit-text-stroke:1px var(--amber);
-}
-.client-badge::after{
-  content:'/';
-  color:var(--steel);
-  -webkit-text-stroke:0;
-  font-weight:400;
-}
-
 /* Logo wall variant */
 .logo-badge{
   display:flex;
@@ -750,28 +785,17 @@ img{display:block;max-width:100%;}
   filter:grayscale(0%) opacity(1);
   transform:scale(1.06);
 }
-.logo-badge span{
-  font-family:var(--mono);
-  font-size:0.78rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:var(--steel);
-  white-space:nowrap;
-  transition:color 0.4s ease;
-}
-.logo-badge:hover span{color:var(--amber);}
 @media(max-width:600px){
   .logo-badge{gap:24px;padding:0 28px;}
   .logo-badge img{height:40px;max-width:120px;padding:6px 10px;}
 }
-.marquee-row.reverse{animation:marqueeRev 44s linear infinite;}
 .clients-block + .clients-block{margin-top:6px;}
 .clients-block{
   display:flex;
   width:max-content;
 }
-.clients-block.rev{animation:marqueeRev 46s linear infinite;}
-.clients-block.fwd{animation:marquee 38s linear infinite;}
+.clients-block.is-cloned.rev{animation:marqueeRev 46s linear infinite;}
+.clients-block.is-cloned.fwd{animation:marquee 38s linear infinite;}
 .clients:hover .clients-block{animation-play-state:paused;}
 @keyframes marqueeRev{
   from{transform:translateX(-50%);}
@@ -951,7 +975,16 @@ img{display:block;max-width:100%;}
   color:var(--steel-light);
   text-align:center;
 }
-.form-note a{color:var(--accent,inherit);text-decoration:underline;}
+.form-note a{color:var(--amber);text-decoration:underline;}
+.btn-wa{
+  width:100%;margin-top:12px;background:transparent;color:var(--off-white);
+  border:1px solid rgba(232,228,220,0.25);padding:16px 28px;
+  font-family:var(--display);font-weight:700;font-size:0.95rem;
+  text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;border-radius:1px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  transition:border-color 0.3s ease, color 0.3s ease;
+}
+.btn-wa:hover,.btn-wa:focus-visible{border-color:var(--amber);color:var(--amber);}
 
 /* ============ FOOTER ============ */
 footer{
@@ -975,7 +1008,7 @@ footer{
   align-items:center;
   gap:10px;
 }
-.footer-logo .mark{color:var(--amber);}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;}
 .footer-meta{
   font-family:var(--mono);
   font-size:0.78rem;
@@ -999,33 +1032,37 @@ footer{
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ NAV ============ -->
 <nav class="navbar" id="navbar">
-  <a href="#" class="nav-logo"><img src="logos/logo-mark.svg" alt="" class="logo-mark">HUSSAIN ENGINEERING</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <a href="#" class="nav-logo"><img src="logos/logo-mark.svg" alt="" class="logo-mark" width="43" height="38">HUSSAIN ENGINEERING</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
     <a href="#about">Legacy</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#projects">Projects</a>
+    <a href="/automotive-spoilers-body-parts">Auto Parts</a>
+    <a href="/tank-linings">Tank Linings</a>
     <a href="#clients">Clients</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<main id="main">
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="hero-bg">
-    <img src="https://picsum.photos/seed/grp-shipyard-hero/1920/1080" alt="Fiberglass boat hull under construction at a Karachi shipyard">
+    <img src="https://picsum.photos/seed/grp-shipyard-hero/1920/1080" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Karachi · Est. industrial composites</div>
+    <div class="hero-eyebrow">Karachi · GRP / FRP fiberglass fabrication</div>
     <h1>
       <span class="line"><span>The</span></span>
       <span class="line"><span class="accent">Engineering</span></span>
       <span class="line"><span>Behind the Build</span></span>
     </h1>
-    <p class="hero-sub">For three decades Hussain Engineering has laminated, molded and welded the vessels, tanks and structures that Pakistan's marine and industrial sectors run on.</p>
+    <p class="hero-sub">For three decades Hussain Engineering has laminated, molded and welded the fiberglass (GRP/FRP) vessels, tanks and structures that Pakistan's marine and industrial sectors run on.</p>
     <div class="hero-meta">
       <div><span class="num">30<span class="amber-dot">+</span></span>Years in fabrication</div>
       <div><span class="num">49<span class="amber-dot">+</span></span>Projects on record</div>
@@ -1053,13 +1090,13 @@ footer{
         <div class="section-eyebrow">01 — Legacy</div>
         <h2 class="section-title">Three Decades of First-of-Their-Kind Fabrication</h2>
       </div>
-      <p class="section-desc">Pioneering composite engineering for Pakistan's marine, energy and fisheries sectors since the late 1980s.</p>
+      <p class="section-desc">Pioneering GRP and FRP fiberglass engineering for Pakistan's marine, energy and fisheries sectors since the late 1980s.</p>
     </div>
 
     <div class="about-grid">
       <div class="about-text">
         <p class="lead">Hussain Engineering didn't enter the GRP industry — it helped build it in Pakistan, one prototype at a time.</p>
-        <p>What began as a small Karachi fabrication outfit became the country's reference point for fiberglass-reinforced plastic (GRP) and composite work.</p>
+        <p>What began as a small Karachi fabrication outfit became the country's reference point for fiberglass-reinforced plastic (GRP/FRP) and composite work.</p>
         <p>Today the same workshop floor runs production for refineries, power plants, hotels, fisheries authorities and the armed forces. Three decades in, the constant is the same: design it properly, build it to last, and stand behind it in the field.</p>
       </div>
 
@@ -1106,37 +1143,39 @@ footer{
         <div class="section-eyebrow">02 — Capabilities</div>
         <h2 class="section-title">Three Disciplines, One Workshop Floor</h2>
       </div>
-      <p class="section-desc">From hull lamination to poured foundations — design, mould, fabricate, finish and install, in-house.</p>
+      <p class="section-desc">From first lamination to final finish — design, mould, fabricate, finish and install, in-house.</p>
     </div>
 
     <div class="cap-grid">
       <div class="cap-card">
-        <div class="cap-img"><img src="capabilities/insutrial%20and%20tank%20linings.jpg" alt="Large GRP industrial storage tank installation"></div>
+        <div class="cap-img"><img src="capabilities/industrial-tank-linings.webp" alt="Large white horizontal GRP storage tank on support cradles" width="1000" height="752" loading="lazy" decoding="async"></div>
         <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         <div class="cap-card-content">
           <span class="cap-num">CAP / 01</span>
           <h3>Industrial Tanks &amp; Linings</h3>
-          <p>Underground fuel tanks, chemical-resistant resin linings, scrubbers and cooling tower sheeting for refineries and power plants — engineered for decades of unattended service.</p>
+          <p>FRP/GRP underground fuel tanks, chemical-resistant resin linings, scrubbers and cooling tower sheeting for refineries and power plants — engineered for decades of unattended service.</p>
+          <a class="cap-link" href="/tank-linings">Tank linings →</a>
         </div>
       </div>
 
       <div class="cap-card">
-        <div class="cap-img"><img src="capabilities/composite%20auto%20parts.jpg" alt="Composite automotive panel being moulded"></div>
+        <div class="cap-img"><img src="capabilities/composite-auto-parts.webp" alt="Composite automotive bumper panel being finished in a spray booth" width="1000" height="654" loading="lazy" decoding="async"></div>
         <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         <div class="cap-card-content">
           <span class="cap-num">CAP / 02</span>
           <h3>Composite Auto Parts</h3>
-          <p>Registered composite-component manufacturer for Ghandhara Industries and GM — spoilers, air ducts, shrouds, mudguards, bonnets and trim covers for trucks, buses and tractors.</p>
+          <p>Registered composite-component manufacturer for Ghandhara Industries and GM — fiberglass spoilers, air ducts, shrouds, mudguards, bonnets and trim covers for trucks, buses and tractors.</p>
+          <a class="cap-link" href="/automotive-spoilers-body-parts">Spoilers &amp; body parts →</a>
         </div>
       </div>
 
       <div class="cap-card" style="grid-column: span 2;">
-        <div class="cap-img"><img src="capabilities/custom%20fabrications.jpg" alt="Custom GRP fabrication workshop floor"></div>
+        <div class="cap-img"><img src="capabilities/custom-fabrication.webp" alt="Worker finishing a moulded composite panel on a fabrication bench" width="1000" height="712" loading="lazy" decoding="async"></div>
         <span class="cap-tag"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
         <div class="cap-card-content">
           <span class="cap-num">CAP / 03</span>
           <h3>Custom Fabrication &amp; One-Off Builds</h3>
-          <p>Domes, louvers, canopies, merry-go-rounds, aquaponics beds, mesh and corrugated GRP sheet — if it can be laminated, moulded or welded, it has likely already passed through this workshop.</p>
+          <p>Domes, louvers, canopies, merry-go-rounds, aquaponics beds, mesh and corrugated GRP/FRP fiberglass sheet — if it can be laminated, moulded or welded, it has likely already passed through this workshop.</p>
         </div>
       </div>
     </div>
@@ -1164,7 +1203,7 @@ footer{
 
       <div class="proj-card featured">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="projects/p2.jpg" alt="Prawn breeding research station tanks"></div>
+        <div class="layer layer-1"><img src="projects/p2.webp" alt="Fish and prawn culture tanks floating in open water" width="1000" height="311" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 01</div>
@@ -1176,7 +1215,7 @@ footer{
 
       <div class="proj-card">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="projects/p4.jpg" alt="Domed pool covering structure"></div>
+        <div class="layer layer-1"><img src="projects/p4.webp" alt="Hotel swimming pool with a covered children's area" width="241" height="159" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 02</div>
@@ -1188,7 +1227,7 @@ footer{
 
       <div class="proj-card">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="projects/p5.jpg" alt="Industrial window louvers at a power plant"></div>
+        <div class="layer layer-1"><img src="projects/p5.webp" alt="Green louvered window panels on an industrial building" width="1000" height="432" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 03</div>
@@ -1200,7 +1239,7 @@ footer{
 
       <div class="proj-card">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="projects/p8.jpg" alt="Patrol boat for Baluchistan Fisheries"></div>
+        <div class="layer layer-1"><img src="projects/p8.webp" alt="Fisheries patrol boat running at speed at sea" width="1000" height="794" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 04</div>
@@ -1212,7 +1251,7 @@ footer{
 
       <div class="proj-card">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="capabilities/composite%20auto%20parts.jpg" alt="Composite spoiler panel for a truck"></div>
+        <div class="layer layer-1"><img src="capabilities/composite-auto-parts.webp" alt="Composite automotive bumper panel being finished in a spray booth" width="1000" height="654" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 05</div>
@@ -1224,7 +1263,7 @@ footer{
 
       <div class="proj-card">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="capabilities/insutrial%20and%20tank%20linings.jpg" alt="GRP lined industrial tank"></div>
+        <div class="layer layer-1"><img src="capabilities/industrial-tank-linings.webp" alt="Large white horizontal GRP storage tank on support cradles" width="1000" height="752" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 06</div>
@@ -1236,7 +1275,7 @@ footer{
 
       <div class="proj-card featured">
         <div class="layer layer-3"></div>
-        <div class="layer layer-1"><img src="projects/p10.jpg" alt="Research station tanks at a university"></div>
+        <div class="layer layer-1"><img src="projects/p10.webp" alt="Blue circular GRP tanks standing outdoors" width="1000" height="792" loading="lazy" decoding="async"></div>
         <div class="layer layer-2"></div>
         <div class="proj-overlay">
           <div class="proj-job">Project № 07</div>
@@ -1270,40 +1309,25 @@ footer{
 
   <div class="marquee-row">
     <div class="clients-block fwd">
-      <div class="logo-badge"><img src="logos/NRL.jpg" alt="National Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
-      <div class="logo-badge"><img src="logos/PRL.jpg" alt="Pakistan Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
-      <div class="logo-badge"><img src="logos/byco.jpg" alt="Byco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
-      <div class="logo-badge"><img src="logos/descon.jpg" alt="DESCON" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
-      <div class="logo-badge"><img src="logos/ghandara.jpg" alt="Ghandhara Industries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
-      <div class="logo-badge"><img src="logos/dha.jpg" alt="DHA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
-      <div class="logo-badge"><img src="logos/wwf.jpg" alt="WWF" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
-      <div class="logo-badge"><img src="logos/karachi%20university.jpg" alt="Karachi University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
-      <div class="logo-badge"><img src="logos/NRL.jpg" alt="National Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">National Refinery</span></div>
-      <div class="logo-badge"><img src="logos/PRL.jpg" alt="Pakistan Refinery" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Pakistan Refinery</span></div>
-      <div class="logo-badge"><img src="logos/byco.jpg" alt="Byco" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Byco</span></div>
-      <div class="logo-badge"><img src="logos/descon.jpg" alt="DESCON" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DESCON</span></div>
-      <div class="logo-badge"><img src="logos/ghandara.jpg" alt="Ghandhara Industries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ghandhara Industries</span></div>
-      <div class="logo-badge"><img src="logos/dha.jpg" alt="DHA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">DHA</span></div>
-      <div class="logo-badge"><img src="logos/wwf.jpg" alt="WWF" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">WWF</span></div>
-      <div class="logo-badge"><img src="logos/karachi%20university.jpg" alt="Karachi University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Karachi University</span></div>
+      <div class="logo-badge"><img src="logos/nrl.webp" alt="National Refinery" width="180" height="187" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/prl.webp" alt="Pakistan Refinery" width="158" height="102" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/byco.webp" alt="Byco" width="100" height="36" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/descon.webp" alt="DESCON" width="113" height="85" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/ghandhara.webp" alt="Ghandhara Industries" width="150" height="35" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/dha.webp" alt="DHA" width="96" height="89" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/wwf.webp" alt="WWF" width="152" height="165" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/karachi-university.webp" alt="Karachi University" width="126" height="50" loading="lazy" decoding="async"></div>
     </div>
   </div>
   <div class="marquee-row">
     <div class="clients-block rev">
-      <div class="logo-badge"><img src="logos/carlton.jpg" alt="Carlton Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
-      <div class="logo-badge"><img src="logos/sherton.jpg" alt="Hotel Sheraton" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
-      <div class="logo-badge"><img src="logos/kwsb.jpg" alt="KWSB" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
-      <div class="logo-badge"><img src="logos/nooriabad.jpg" alt="Nooriabad Power Co." onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
-      <div class="logo-badge"><img src="logos/hubco.jpg" alt="Hub Power Plant" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
-      <div class="logo-badge"><img src="logos/bahria.jpg" alt="Bahria Foundation" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
-      <div class="logo-badge"><img src="logos/fisheries.jpg" alt="Baluchistan Fisheries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
-      <div class="logo-badge"><img src="logos/carlton.jpg" alt="Carlton Hotel" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Carlton Hotel</span></div>
-      <div class="logo-badge"><img src="logos/sherton.jpg" alt="Hotel Sheraton" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hotel Sheraton</span></div>
-      <div class="logo-badge"><img src="logos/kwsb.jpg" alt="KWSB" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">KWSB</span></div>
-      <div class="logo-badge"><img src="logos/nooriabad.jpg" alt="Nooriabad Power Co." onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Nooriabad Power Co.</span></div>
-      <div class="logo-badge"><img src="logos/hubco.jpg" alt="Hub Power Plant" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Hub Power Plant</span></div>
-      <div class="logo-badge"><img src="logos/bahria.jpg" alt="Bahria Foundation" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Bahria Foundation</span></div>
-      <div class="logo-badge"><img src="logos/fisheries.jpg" alt="Baluchistan Fisheries" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Baluchistan Fisheries</span></div>
+      <div class="logo-badge"><img src="logos/carlton.webp" alt="Carlton Hotel" width="159" height="124" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/sheraton.webp" alt="Hotel Sheraton" width="170" height="115" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/kwsb.webp" alt="KWSB" width="56" height="52" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/nooriabad.webp" alt="Nooriabad Power Co." width="163" height="64" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/hubco.webp" alt="Hub Power Plant" width="152" height="69" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/bahria.webp" alt="Bahria Foundation" width="168" height="62" loading="lazy" decoding="async"></div>
+      <div class="logo-badge"><img src="logos/fisheries.webp" alt="Baluchistan Fisheries" width="168" height="165" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -1367,17 +1391,17 @@ footer{
           <div class="form-row">
             <div class="form-group">
               <label for="fname">Name</label>
-              <input type="text" id="fname" name="fname" placeholder="Your name" required>
+              <input type="text" id="fname" name="fname" placeholder="Your name" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label for="fcompany">Company</label>
-              <input type="text" id="fcompany" name="fcompany" placeholder="Organisation (optional)">
+              <input type="text" id="fcompany" name="fcompany" placeholder="Organisation (optional)" autocomplete="organization">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="femail">Email</label>
-              <input type="email" id="femail" name="femail" placeholder="you@example.com" required>
+              <input type="email" id="femail" name="femail" placeholder="you@example.com" autocomplete="email" inputmode="email" required>
             </div>
             <div class="form-group">
               <label for="fcategory">Type of Work</label>
@@ -1398,27 +1422,36 @@ footer{
             Send Inquiry
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </button>
-          <p class="form-note" id="mailFallback" hidden></p>
+          <button type="button" class="btn-wa" id="waBtn">
+            Chat on WhatsApp
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          </button>
+          <p class="form-note" id="mailFallback" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-logo"><img src="logos/logo-mark.svg" alt="" class="logo-mark">HUSSAIN ENGINEERING</div>
+      <div class="footer-logo"><img src="logos/logo-mark.svg" alt="" class="logo-mark" width="43" height="38">HUSSAIN ENGINEERING</div>
       <div class="footer-meta">
-        GRP &amp; Composite Fabrication · Karachi, Pakistan<br>
-        © <span id="year"></span> Hussain Engineering. All rights reserved.
+        <div class="footer-links"><a href="/automotive-spoilers-body-parts">Composite auto parts</a><a href="/tank-linings">Tank linings</a></div>
+        GRP, FRP &amp; Fiberglass Fabrication · Karachi, Pakistan<br>
+        © 2026 Hussain Engineering. All rights reserved.
       </div>
     </div>
   </div>
 </footer>
 
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+const root = document.documentElement;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---- Nav scroll state ---- */
 const navbar = document.getElementById('navbar');
@@ -1429,157 +1462,144 @@ window.addEventListener('scroll', () => {
 /* ---- Mobile nav toggle ---- */
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navToggle.classList.remove('open');
-  navLinks.classList.remove('open');
-}));
+function setNav(open) {
+  navToggle.classList.toggle('open', open);
+  navLinks.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+}
+navToggle.addEventListener('click', () => setNav(!navLinks.classList.contains('open')));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
 
-/* ---- GSAP setup ---- */
-gsap.registerPlugin(ScrollTrigger);
+/* ---- Client logo marquee: duplicate the set for a seamless loop (decorative copy hidden from AT) ---- */
+if (!reduceMotion) {
+  document.querySelectorAll('.clients-block').forEach(block => {
+    Array.from(block.children).forEach(item => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('img').forEach(img => { img.alt = ''; });
+      block.appendChild(clone);
+    });
+    block.classList.add('is-cloned');
+  });
+}
 
-/* Hero title line reveal */
-gsap.to('.hero h1 .line span', {
-  y: 0,
-  duration: 1,
-  ease: 'power4.out',
-  stagger: 0.12,
-  delay: 0.2
-});
-gsap.from('.hero-eyebrow, .hero-sub, .hero-meta', {
-  opacity: 0,
-  y: 20,
-  duration: 1,
-  ease: 'power3.out',
-  stagger: 0.15,
-  delay: 0.6
-});
+/* ---- GSAP effects (progressive enhancement: page is fully visible without them) ---- */
+if (window.gsap && window.ScrollTrigger && !reduceMotion) {
+  gsap.registerPlugin(ScrollTrigger);
 
-/* Hero parallax */
-gsap.to('.hero-bg img', {
-  yPercent: 18,
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.hero',
-    start: 'top top',
-    end: 'bottom top',
-    scrub: true
+  /* Hero title line reveal */
+  gsap.to('.hero h1 .line span', {
+    y: 0,
+    duration: 1,
+    ease: 'power4.out',
+    stagger: 0.12,
+    delay: 0.2
+  });
+  gsap.fromTo('.hero-eyebrow, .hero-sub, .hero-meta',
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.15, delay: 0.6 });
+
+  /* Hero parallax (desktop only) */
+  if (window.innerWidth > 860) {
+    gsap.to('.hero-bg img', {
+      yPercent: 18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
   }
-});
 
-/* Resin divider morph on scroll */
-const resinPaths = [
-  "M0,60 C240,120 480,0 720,40 C960,80 1200,10 1440,70 L1440,140 L0,140 Z",
-  "M0,30 C240,90 480,140 720,80 C960,30 1200,110 1440,40 L1440,140 L0,140 Z",
-  "M0,80 C240,20 480,90 720,30 C960,100 1200,40 1440,90 L1440,140 L0,140 Z"
-];
-document.querySelectorAll('.resin-divider svg path').forEach((path, i) => {
-  gsap.to(path, {
-    attr: { d: resinPaths[(i+1) % resinPaths.length] },
-    scrollTrigger: {
-      trigger: path.closest('.resin-divider'),
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1
-    }
-  });
-});
-
-/* Section reveals */
-gsap.utils.toArray('.section-head, .timeline-item, .stats-row, .cap-card, .proj-card, .contact-info, .contact-form').forEach(el => {
-  el.classList.add('reveal');
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 85%',
-    onEnter: () => el.classList.add('in'),
-    once: true
-  });
-});
-
-/* Animated counters for stats row */
-document.querySelectorAll('.stat-num').forEach(el => {
-  const fullText = el.textContent.trim();
-  const match = fullText.match(/(\d+)(.*)/);
-  if (!match) return;
-  const target = parseInt(match[1]);
-  const suffixText = match[2].trim();
-  el.innerHTML = '<span class="count">0</span><span class="suffix">' + suffixText + '</span>';
-  const counterEl = el.querySelector('.count');
-  gsap.to(counterEl, {
-    textContent: target,
-    duration: 2,
-    ease: 'power2.out',
-    snap: { textContent: 1 },
-    scrollTrigger: {
+  /* Section reveals */
+  gsap.utils.toArray('.section-head, .timeline-item, .stats-row, .cap-card, .proj-card, .contact-info, .contact-form').forEach(el => {
+    el.classList.add('reveal');
+    ScrollTrigger.create({
       trigger: el,
       start: 'top 85%',
+      onEnter: () => el.classList.add('in'),
       once: true
-    }
+    });
   });
-});
 
-document.querySelectorAll('.hero-meta .num').forEach(el => {
-  const fullText = el.textContent.trim();
-  const match = fullText.match(/(\d+)(.*)/);
-  if (!match) return;
-  const target = parseInt(match[1]);
-  const suffixText = match[2].trim();
-  el.innerHTML = '<span class="count">0</span><span class="amber-dot">' + suffixText + '</span>';
-  const counterEl = el.querySelector('.count');
-  gsap.to(counterEl, {
-    textContent: target,
-    duration: 1.8,
-    ease: 'power2.out',
-    snap: { textContent: 1 },
-    delay: 0.8
+  /* Animated counters */
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const match = el.textContent.trim().match(/(\d+)(.*)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    el.innerHTML = '<span class="count">0</span><span class="suffix">' + match[2].trim() + '</span>';
+    gsap.to(el.querySelector('.count'), {
+      textContent: target,
+      duration: 2,
+      ease: 'power2.out',
+      snap: { textContent: 1 },
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    });
   });
-});
 
-/* ---- Mailto form ---- */
-document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = document.getElementById('fname').value;
-  const company = document.getElementById('fcompany').value;
-  const email = document.getElementById('femail').value;
-  const category = document.getElementById('fcategory').value;
-  const message = document.getElementById('fmessage').value;
+  document.querySelectorAll('.hero-meta .num').forEach(el => {
+    const match = el.textContent.trim().match(/(\d+)(.*)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    el.innerHTML = '<span class="count">0</span><span class="amber-dot">' + match[2].trim() + '</span>';
+    gsap.to(el.querySelector('.count'), {
+      textContent: target,
+      duration: 1.8,
+      ease: 'power2.out',
+      snap: { textContent: 1 },
+      delay: 0.8
+    });
+  });
+} else {
+  /* GSAP blocked, failed to load, or reduced motion requested: show everything immediately */
+  root.classList.remove('js');
+}
 
-  const subjectText = 'Project Inquiry from Website';
-  const bodyText =
-`New project inquiry submitted via the Hussain Engineering website.
+/* ---- Inquiry form: mailto (default email app) or WhatsApp ---- */
+const CONTACT_EMAIL = 'hussainengineering.sales@gmail.com';
+const WHATSAPP_NUMBER = '923368045770';
+const form = document.getElementById('inquiryForm');
 
-Name: ${name}
-Company: ${company || 'N/A'}
-Email: ${email}
-Type of Work: ${category}
+function inquiryText() {
+  const v = id => document.getElementById(id).value;
+  return `New project inquiry submitted via the Hussain Engineering website.
+
+Name: ${v('fname')}
+Company: ${v('fcompany') || 'N/A'}
+Email: ${v('femail')}
+Type of Work: ${v('fcategory')}
 
 Project Details:
-${message}`;
-  const to = 'hussainengineering.sales@gmail.com';
-  const subject = encodeURIComponent(subjectText);
-  const body = encodeURIComponent(bodyText);
+${v('fmessage')}`;
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const subject = encodeURIComponent('Project Inquiry from Website');
+  const body = encodeURIComponent(inquiryText());
 
   // Open the default email client with the pre-filled message
   const a = document.createElement('a');
-  a.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  a.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   document.body.appendChild(a);
   a.click();
   a.remove();
 
   // Fallback if no default mail app is configured on this device
   const note = document.getElementById('mailFallback');
-  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
-  note.innerHTML = 'Email app didn’t open? <a href="' + gmail + '" target="_blank" rel="noopener">Compose in Gmail</a> or write to <a href="mailto:' + to + '">' + to + '</a>.';
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${subject}&body=${body}`;
+  note.innerHTML = 'Email app didn\u2019t open? <a href="' + gmail + '" target="_blank" rel="noopener">Compose in Gmail</a> or write to <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.';
   note.hidden = false;
 });
+
+document.getElementById('waBtn').addEventListener('click', () => {
+  if (!form.reportValidity()) return;
+  window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(inquiryText()), '_blank', 'noopener');
+});
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>

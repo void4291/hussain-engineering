@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hussain-engineering.vercel.app/sitemap.xml
