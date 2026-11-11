@@ -141,14 +141,14 @@ function initReveals() {
   $$('[data-count]').forEach(el => { el.textContent = '0'; cio.observe(el); });
 }
 
-/* ------------------------------------------- stage: the GRP tank, drawn → built */
+/* ------------------------------------------- stage: the GRP tank, sample mould → installed */
 function initStage() {
   const stage = $('.stage');
   if (!stage) return;
   const canvas = $('.stage-canvas', stage), ctx = canvas.getContext('2d');
   const hero = $('.hero', stage), beats = $$('.beat', stage), rail = $('.rail', stage), railItems = $$('.rail li', stage);
   const hud = $('.stage-hud', stage), hudNum = $('.hud-val', stage), hudLab = $('.hud-label', stage);
-  const LABELS = ['Drawing', 'Mould', 'Lamination', 'In service'];
+  const LABELS = ['Sample mould', 'Lamination', 'Finishing', 'In service'];
 
   /* --- mesh: horizontal vessel with dished ends (surface of revolution about x) --- */
   const N = 40, L = 1.5, R = 1, D = 0.52, CS = 8, BS = 16, CAM = 7;
@@ -204,8 +204,7 @@ function initStage() {
     const d = CAM / (CAM + z2);
     out[0] = cx + x1 * sc * d; out[1] = cy - y2 * sc * d; out[2] = x1; out[3] = y2; out[4] = z2;
   }
-  const tmp = [0, 0, 0, 0, 0], tA = [0, 0, 0, 0, 0], tB = [0, 0, 0, 0, 0];
-  function line3(a, b) { project(a[0], a[1], a[2], tA); project(b[0], b[1], b[2], tB); ctx.moveTo(tA[0], tA[1]); ctx.lineTo(tB[0], tB[1]); }
+  const tmp = [0, 0, 0, 0, 0];
   function path(q) {
     const v = q.v;
     ctx.moveTo(PX[v[0]], PY[v[0]]);
@@ -225,43 +224,21 @@ function initStage() {
     const pitch = 0.36 + my * 0.1 + Math.sin(p * Math.PI) * 0.12;
     cyw = Math.cos(yaw); syw = Math.sin(yaw); cp = Math.cos(pitch); sp = Math.sin(pitch);
 
-    const solid = smooth(0.30, 0.42, p);          // mould: hidden-line body
-    const sweep = smooth(0.52, 0.78, p) * 1.2;    // laminate: paper skin travels along the vessel
-    const finish = smooth(0.80, 0.92, p);         // gelcoat band
-    const blueprint = 1 - smooth(0.30, 0.46, p);
+    /* the four beats: sample mould → laminate → finish → install */
+    const solid = smooth(0.09, 0.21, p);          // sample mould: open lattice closes into a solid form
+    const sweep = smooth(0.32, 0.56, p) * 1.2;    // laminate: paper skin travels along the vessel
+    const finish = smooth(0.57, 0.70, p);         // finish: gelcoat band
+    const install = smooth(0.79, 0.90, p);        // install: manway fitted on the crown
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
     ctx.lineJoin = 'round';
 
+    for (let j = 0; j < M; j++) verts[base + M + j][1] = lerp(NZ0, NZ1, install);
     for (let i = 0; i < verts.length; i++) {
       const v = verts[i];
       project(v[0], v[1], v[2], tmp);
       PX[i] = tmp[0]; PY[i] = tmp[1]; VX[i] = tmp[2]; VY[i] = tmp[3]; VZ[i] = tmp[4];
-    }
-
-    /* blueprint furniture: centreline + dimension lines */
-    if (blueprint > 0.01) {
-      const E = L + D, a = blueprint * intro;
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = `rgba(212,160,23,${0.55 * a})`;
-      ctx.setLineDash([14, 5, 2, 5]);
-      ctx.beginPath(); line3([-E - 0.7, 0, 0], [E + 0.7, 0, 0]); ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.strokeStyle = `rgba(139,155,174,${0.6 * a})`;
-      ctx.beginPath();
-      const yd = -R - 0.55;
-      line3([-E, yd, 0], [E, yd, 0]);
-      line3([-E, -0.15, 0], [-E, yd - 0.12, 0]); line3([E, -0.15, 0], [E, yd - 0.12, 0]);
-      const xd = E + 0.5;
-      line3([xd, -R, 0], [xd, R, 0]);
-      line3([E - D, R, 0], [xd + 0.12, R, 0]); line3([E - D, -R, 0], [xd + 0.12, -R, 0]);
-      ctx.stroke();
-      ctx.fillStyle = `rgba(212,160,23,${0.9 * a})`;
-      ctx.font = '11px "JetBrains Mono", monospace';
-      ctx.textAlign = 'center';
-      project(0, yd - 0.22, 0, tA); ctx.fillText('L', tA[0], tA[1] + 4);
-      project(xd + 0.24, 0, 0, tA); ctx.fillText('Ø', tA[0], tA[1] + 4);
     }
 
     const drawSet = (set, limit) => {
@@ -304,7 +281,7 @@ function initStage() {
       }
     };
     drawSet(quads, Math.floor(intro * S));
-    if (intro >= 1) drawSet(nozzle, S);
+    if (install > 0.01) drawSet(nozzle, S);
   }
 
   function progress() {
@@ -314,9 +291,9 @@ function initStage() {
   }
 
   resize();
-  window.addEventListener('resize', () => { resize(); if (!motion) draw(0.2, 0, 0, 0, 1); });
+  window.addEventListener('resize', () => { resize(); if (!motion) draw(0, 0, 0, 0, 1); });
 
-  if (!motion) { draw(0.2, 0, 0, 0, 1); return; }   // static blueprint behind the hero
+  if (!motion) { draw(0, 0, 0, 0, 1); return; }   // static mould lattice behind the hero
 
   let p = progress(), mx = 0, my = 0, tmx = 0, tmy = 0, t0 = 0, active = -2, pct = -1;
   if (finePointer) window.addEventListener('pointermove', e => { tmx = e.clientX / window.innerWidth * 2 - 1; tmy = e.clientY / window.innerHeight * 2 - 1; }, { passive: true });
