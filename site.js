@@ -141,7 +141,7 @@ function initReveals() {
   $$('[data-count]').forEach(el => { el.textContent = '0'; cio.observe(el); });
 }
 
-/* ------------------------------------------- stage: the GRP tank, sample mould → installed */
+/* ------------------------------------------- stage: the GRP tank, sample mould → in service */
 function initStage() {
   const stage = $('.stage');
   if (!stage) return;
@@ -224,11 +224,11 @@ function initStage() {
     const pitch = 0.36 + my * 0.1 + Math.sin(p * Math.PI) * 0.12;
     cyw = Math.cos(yaw); syw = Math.sin(yaw); cp = Math.cos(pitch); sp = Math.sin(pitch);
 
-    /* the four beats: sample mould → laminate → finish → install */
+    /* the four beats: sample mould → laminate → finish → in service */
     const solid = smooth(0.09, 0.21, p);          // sample mould: open lattice closes into a solid form
     const sweep = smooth(0.32, 0.56, p) * 1.2;    // laminate: paper skin travels along the vessel
     const finish = smooth(0.57, 0.70, p);         // finish: gelcoat band
-    const install = smooth(0.79, 0.90, p);        // install: manway fitted on the crown
+    const install = smooth(0.79, 0.90, p);        // in service: manway fitted on the crown
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
