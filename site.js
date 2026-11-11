@@ -141,14 +141,14 @@ function initReveals() {
   $$('[data-count]').forEach(el => { el.textContent = '0'; cio.observe(el); });
 }
 
-/* ------------------------------------------- stage: the GRP tank, sample mould → in service */
+/* ------------------------------------------- stage: the GRP tank, sample mould → finished vessel */
 function initStage() {
   const stage = $('.stage');
   if (!stage) return;
   const canvas = $('.stage-canvas', stage), ctx = canvas.getContext('2d');
   const hero = $('.hero', stage), beats = $$('.beat', stage), rail = $('.rail', stage), railItems = $$('.rail li', stage);
   const hud = $('.stage-hud', stage), hudNum = $('.hud-val', stage), hudLab = $('.hud-label', stage);
-  const LABELS = ['Sample mould', 'Lamination', 'Finishing', 'In service'];
+  const LABELS = ['Sample mould', 'Lamination', 'Finishing', 'Built to last'];
 
   /* --- mesh: horizontal vessel with dished ends (surface of revolution about x) --- */
   const N = 40, L = 1.5, R = 1, D = 0.52, CS = 8, BS = 16, CAM = 7;
@@ -224,11 +224,11 @@ function initStage() {
     const pitch = 0.36 + my * 0.1 + Math.sin(p * Math.PI) * 0.12;
     cyw = Math.cos(yaw); syw = Math.sin(yaw); cp = Math.cos(pitch); sp = Math.sin(pitch);
 
-    /* the four beats: sample mould → laminate → finish → in service */
+    /* the four beats: sample mould → laminate → finish → built to last */
     const solid = smooth(0.09, 0.21, p);          // sample mould: open lattice closes into a solid form
     const sweep = smooth(0.32, 0.56, p) * 1.2;    // laminate: paper skin travels along the vessel
     const finish = smooth(0.57, 0.70, p);         // finish: gelcoat band
-    const install = smooth(0.79, 0.90, p);        // in service: manway fitted on the crown
+    const install = smooth(0.79, 0.90, p);        // built to last: manway completes the vessel
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
