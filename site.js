@@ -457,7 +457,7 @@ function initCursor() {
 function initForm() {
   const form = $('#inquiryForm');
   if (!form) return;
-  const CONTACT_EMAIL = 'hussainengineering.sales@gmail.com';
+  const CONTACT_EMAIL = 'sales.hussainengineering@gmail.com';
   const WHATSAPP_NUMBER = '923368045770';
   const v = id => document.getElementById(id).value;
   const inquiryText = () => `New project inquiry submitted via the Hussain Engineering website.
